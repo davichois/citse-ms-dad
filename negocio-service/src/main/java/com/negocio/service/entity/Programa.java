@@ -11,11 +11,11 @@ public class Programa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_programa;
+    private Integer id_programa;
 
     private String no_programa;
     private String obj_programa;
     private String de_programa;
-    private char es_programa;
+    private Character es_programa;
 
 }

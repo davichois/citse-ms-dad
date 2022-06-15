@@ -11,13 +11,13 @@ public class Taller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_taller;
+    private Integer id_taller;
 
     private String no_taller;
     private String obj_taller;
     private String de_taller;
     private String fe_inicio;
     private String fe_final;
-    private char es_taller;
+    private Character es_taller;
 
 }
