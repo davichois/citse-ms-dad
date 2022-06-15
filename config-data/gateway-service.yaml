@@ -13,10 +13,10 @@ spring:
   clound:
     gateway:
       discovery:
-	locator:
-	  enable: true
+        locator:
+          enable: true
       routes:
-	- id: negocio-service
-	  uri: lb://negocio-service
-	  predicates:
-	    - Path=/negocio/**
+        - id: negocio-service
+          uri: lb://negocio-service
+          predicates:
+            - Path=/negocio/**
