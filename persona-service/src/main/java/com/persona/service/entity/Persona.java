@@ -14,13 +14,24 @@ public class Persona {
     private Integer id_persona;
 
     private String no_persona;
+
     private String ap_paterno;
+
     private String ap_materno;
+
     private String nu_indentificacion;
+
     private String fe_nacimiento;
-    private Character es_persona;
-    private Integer ti_indentificacion;
-    private Integer ti_es_civil;
-    private Integer id_per_comunidad;
+
+    @Column(name = "es_persona", columnDefinition = "BIT")
+    private Boolean es_persona;
+
+    private Integer id_ti_indentificacion;
+
+    private Integer id_ti_persona;
+
+    private Integer id_comunidad;
+
+    private Integer id_ti_es_civil;
 
 }
