@@ -1,0 +1,7 @@
+spring:
+  aplication:
+    name: ubigeo-service
+  cloud:
+    config:
+      enabled: true
+      uir: http://localhost:8081
