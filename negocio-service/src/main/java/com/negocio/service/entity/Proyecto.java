@@ -31,6 +31,11 @@ public class Proyecto {
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
     private Set<Programa> programas = new HashSet<>();
 
+    @OneToMany(mappedBy = "proyectosa",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Entidad_Proyecto> entidades;
+
+    @OneToMany(mappedBy = "proyectosb",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Proyecto_Lugar> lugares;
 
     public void setProgramas(Set<Programa> programas) {
         this.programas = programas;
