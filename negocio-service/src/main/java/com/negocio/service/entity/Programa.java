@@ -14,20 +14,26 @@ public class Programa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_programa;
+    @Column(name = "id_programa")
+    private Integer idPrograma;
 
-    private String no_programa;
+    @Column(name = "no_programa")
+    private String noPrograma;
 
-    private String obj_programa;
+    @Column(name = "obj_programa")
+    private String objPrograma;
 
-    private String de_programa;
+    @Column(name = "de_programa")
+    private String dePrograma;
 
-    private String fe_inicio;
+    @Column(name = "fe_inicio")
+    private String feInicio;
 
-    private String fe_fin;
+    @Column(name = "fe_fin")
+    private String feFin;
 
-    @Column(name = "es_programa", columnDefinition = "BIT")
-    private Boolean es_programa;
+    @Column(name = "es_programa")
+    private Boolean esPrograma;
 
     @OneToMany(mappedBy = "programa", cascade = CascadeType.ALL)
     private Set<Taller> talleres = new HashSet<>();
@@ -37,11 +43,4 @@ public class Programa {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Proyecto proyecto;
 
-
-    public void setTalleres(Set<Taller> talleres) {
-        this.talleres = talleres;
-        for (Taller taller : talleres){
-            taller.setPrograma(this);
-        }
-    }
 }

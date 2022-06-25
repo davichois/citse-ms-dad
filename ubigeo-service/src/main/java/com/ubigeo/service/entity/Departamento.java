@@ -12,9 +12,11 @@ public class Departamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_departamento;
+    @Column(name = "id_departamento")
+    private Integer idDepartamento;
 
-    private String no_departamento;
+    @Column(name = "no_departamento")
+    private String noDepartamento;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "id_departamento")
     private List<Provincia> provincias;

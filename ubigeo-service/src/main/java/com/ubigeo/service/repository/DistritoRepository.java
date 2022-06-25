@@ -12,13 +12,4 @@ import java.util.List;
 
 @Repository
 public interface DistritoRepository extends JpaRepository<Distrito,Integer> {
-
-    public Distrito findById();
-    /*
-    @Query("SELECT d FROM TAX_DISTRITOS d WHERE(no_distrito LIKE %:query% or id_distrito LIKE %:query%)")
-    List<Distrito> findAll(String query, Sort sort);
-
-    @Query("SELECT d FROM TAX_DISTRITOS d WHERE(no_distrito LIKE %:query% or id_distrito LIKE %:query%)")
-    Page<Distrito> findAllParams(String query, Pageable pg);
-     */
 }

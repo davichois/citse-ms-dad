@@ -14,34 +14,32 @@ import java.util.Map;
 public class DistritoServiceImp implements DistritoService {
 
     @Autowired
-    private DistritoRepository repo;
+    private DistritoRepository distritoRepository;
+
 
     @Override
-    public Map<String,Object> findAll() {
-
-        Map<String,Object> results = new HashMap<>();
-
-        results.put("error", false);
-        if(!repo.findAll().isEmpty()){
-            results.put("body",repo.findAll());
-        }else{
-            results.put("body",null);
-        }
-        return results;
+    public List<Distrito> findAll() {
+        return distritoRepository.findAll();
     }
 
     @Override
-    public Distrito findById(int id) {
-        return repo.findById(id).orElse(null);
+    public Distrito findById(int idDistrito) {
+        return distritoRepository.findById(idDistrito).orElse(null);
     }
 
     @Override
     public Distrito save(Distrito distrito) {
-        return repo.save(distrito);
+        return distritoRepository.save(distrito);
     }
 
     @Override
-    public void delete(Distrito distrito) {
-        repo.delete(distrito);
+    public String delete(int idDistrito) {
+        boolean searchDepartamento = distritoRepository.findById(idDistrito).isPresent();
+        if (searchDepartamento){
+            distritoRepository.deleteById(idDistrito);
+            return "Distrito eliminado";
+        }
+
+        return null;
     }
 }

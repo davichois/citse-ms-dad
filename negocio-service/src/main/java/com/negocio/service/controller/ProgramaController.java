@@ -1,7 +1,7 @@
 package com.negocio.service.controller;
 
 import com.negocio.service.entity.Programa;
-import com.negocio.service.serviceImp.ProgramaServiceImp;
+import com.negocio.service.service.ProgramaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,20 +13,20 @@ import java.util.List;
 public class ProgramaController {
 
     @Autowired
-    private ProgramaServiceImp programaServiceImp;
+    private ProgramaService programaService;
 
 
     @GetMapping("/")
     public ResponseEntity<List<Programa>> findAll(){
-        return ResponseEntity.ok().body(programaServiceImp.findAll());
+        return ResponseEntity.ok().body(programaService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Programa> findById(@PathVariable int id){
-        Programa proyecto = programaServiceImp.findById(id);
+        Programa proyecto = programaService.findById(id);
 
         if (proyecto != null){
-            return ResponseEntity.ok().body(programaServiceImp.findById(id));
+            return ResponseEntity.ok().body(programaService.findById(id));
         }else{
             return ResponseEntity.noContent().build();
         }
@@ -34,7 +34,7 @@ public class ProgramaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable int id){
-        programaServiceImp.deleteById(id);
+        programaService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 

@@ -11,9 +11,11 @@ public class Distrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_distrito;
+    @Column(name = "id_distrito")
+    private Integer idDistrito;
 
-    private String no_distrito;
+    @Column(name = "no_distrito")
+    private String noDistrito;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_provincia")

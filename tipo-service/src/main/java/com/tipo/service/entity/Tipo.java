@@ -12,10 +12,14 @@ public class Tipo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_tipo;
+    @Column(name = "id_tipo")
+    private Integer idTipo;
 
-    private String no_tipo;
-    private String co_alias;
+    @Column(name = "no_tipo")
+    private String noTipo;
+
+    @Column(name = "co_alias")
+    private String coAlias;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_familia")

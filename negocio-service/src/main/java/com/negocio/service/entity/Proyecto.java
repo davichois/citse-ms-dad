@@ -13,34 +13,34 @@ public class Proyecto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_proyecto;
+    @Column(name = "id_proyecto")
+    private Integer idProyecto;
 
-    private String no_proyecto;
+    @Column(name = "no_proyecto")
+    private String noProyecto;
 
-    private String obj_proyecto;
+    @Column(name = "obj_proyecto")
+    private String objProyecto;
 
-    private String de_proyecto;
+    @Column(name = "de_proyecto")
+    private String deProyecto;
 
-    private String fe_inicio;
+    @Column(name = "fe_inicio")
+    private String feInicio;
 
-    private String fe_fin;
+    @Column(name = "fe_fin")
+    private String feFin;
 
     @Column(name = "es_proyecto", columnDefinition = "BIT")
-    private Boolean es_proyecto;
+    private Boolean esProyecto;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
     private Set<Programa> programas = new HashSet<>();
 
-    @OneToMany(mappedBy = "proyectosa",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Entidad_Proyecto> entidades;
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
+    private Set<EntidadProyecto> entidades = new HashSet<>();;
 
-    @OneToMany(mappedBy = "proyectosb",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Proyecto_Lugar> lugares;
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
+    private Set<ProyectoLugar> lugares = new HashSet<>();;
 
-    public void setProgramas(Set<Programa> programas) {
-        this.programas = programas;
-        for (Programa programa: programas){
-            programa.setProyecto(this);
-        }
-    }
 }

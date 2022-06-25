@@ -13,9 +13,11 @@ public class Familia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_familia;
+    @Column(name = "id_familia")
+    private Integer idFamilia;
 
-    private String no_familia;
+    @Column(name = "no_familia")
+    private String noFamilia;
 
     @OneToMany(mappedBy = "familia", cascade = CascadeType.ALL)
     private Set<Tipo> tipos = new HashSet<>();

@@ -6,42 +6,38 @@ import com.ubigeo.service.service.DepartamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class DepartamentoServiceImp implements DepartamentoService {
 
     @Autowired
-    private DepartamentoRepository repo;
+    private DepartamentoRepository departamentoRepository;
 
 
     @Override
-    public Map<String, Object> findAll() {
-        Map<String,Object> results = new HashMap<>();
-
-        results.put("error", false);
-        if(!repo.findAll().isEmpty()){
-            results.put("body",repo.findAll());
-        }else{
-            results.put("body",null);
-        }
-        return results;
+    public List<Departamento> findAll() {
+        return departamentoRepository.findAll();
     }
 
     @Override
-    public Departamento findById(int id) {
-        return repo.findById(id).orElse(null);
+    public Departamento findById(int idDepartamento) {
+        return departamentoRepository.findById(idDepartamento).orElse(null);
     }
 
     @Override
     public Departamento save(Departamento departamento) {
-        return repo.save(departamento);
+        return departamentoRepository.save(departamento);
     }
 
     @Override
-    public void delete(Departamento departamento) {
-        repo.delete(departamento);
+    public String delete(int idDepartamento) {
+        boolean searchDepartamento = departamentoRepository.findById(idDepartamento).isPresent();
+        if (searchDepartamento){
+            departamentoRepository.deleteById(idDepartamento);
+            return "Departamento eliminado";
+        }
+
+        return null;
     }
 }

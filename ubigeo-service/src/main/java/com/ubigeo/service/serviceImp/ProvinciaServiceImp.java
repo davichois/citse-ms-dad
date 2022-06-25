@@ -6,40 +6,39 @@ import com.ubigeo.service.service.ProvinciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Service
 public class ProvinciaServiceImp implements ProvinciaService {
 
     @Autowired
-    private ProvinciaRepository repo;
+    private ProvinciaRepository provinciaRepository;
+
 
     @Override
-    public Map<String,Object> findAll() {
-        Map<String,Object> results = new HashMap<>();
-
-        results.put("error", false);
-        if(!repo.findAll().isEmpty()){
-            results.put("body",repo.findAll());
-        }else{
-            results.put("body",null);
-        }
-        return results;
+    public List<Provincia> findAll() {
+        return provinciaRepository.findAll();
     }
 
     @Override
-    public Provincia findById(int id) {
-        return repo.findById(id).orElse(null);
+    public Provincia findById(int idProvincia) {
+        return provinciaRepository.findById(idProvincia).orElse(null);
     }
 
     @Override
     public Provincia save(Provincia provincia) {
-        return repo.save(provincia);
+        return provinciaRepository.save(provincia);
     }
 
     @Override
-    public void delete(Provincia provincia) {
-        repo.delete(provincia);
+    public String delete(int idProvincia) {
+        boolean searchDepartamento = provinciaRepository.findById(idProvincia).isPresent();
+        if (searchDepartamento){
+            provinciaRepository.deleteById(idProvincia);
+            return "Distrito eliminado";
+        }
+
+        return null;
     }
+
 }

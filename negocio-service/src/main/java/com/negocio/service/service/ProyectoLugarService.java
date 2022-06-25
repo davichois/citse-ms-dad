@@ -1,13 +1,13 @@
 package com.negocio.service.service;
 
-import com.negocio.service.entity.Proyecto_Lugar;
+import com.negocio.service.entity.ProyectoLugar;
 
 import java.util.List;
 
 public interface ProyectoLugarService {
-    List<Proyecto_Lugar> findAll();
+    List<ProyectoLugar> findAll();
 
-    Proyecto_Lugar findById(int id_proyecto_lugar);
+    ProyectoLugar findById(int id_proyecto_lugar);
 
-    Proyecto_Lugar deleteById(int id_proyecto_lugar);
+    ProyectoLugar deleteById(int id_proyecto_lugar);
 }

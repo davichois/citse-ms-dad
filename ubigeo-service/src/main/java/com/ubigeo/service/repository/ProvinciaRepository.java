@@ -12,12 +12,4 @@ import java.util.List;
 
 @Repository
 public interface ProvinciaRepository extends JpaRepository<Provincia,Integer> {
-
-    public Provincia findById();
-   /* @Query("SELECT d FROM TAX_PROVINCIAS d WHERE(NO_PROVINCIA LIKE %:query% or ID_PROVINCIA LIKE %:query%)")
-    List<Provincia> findAll(String query, Sort sort);
-
-    @Query("SELECT d FROM TAX_PROVINCIAS d WHERE(NO_PROVINCIA LIKE %:query% or ID_PROVINCIA LIKE %:query%)")
-    Page<Provincia> findAllParams(String query, Pageable pg);
-    */
 }

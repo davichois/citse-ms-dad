@@ -1,6 +1,6 @@
 package com.negocio.service.serviceImp;
 
-import com.negocio.service.entity.Proyecto_Lugar;
+import com.negocio.service.entity.ProyectoLugar;
 import com.negocio.service.repository.PLRepository;
 import com.negocio.service.service.ProyectoLugarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +15,18 @@ public class PLServiceImp implements ProyectoLugarService {
     private PLRepository repo;
 
     @Override
-    public List<Proyecto_Lugar> findAll() {
+    public List<ProyectoLugar> findAll() {
         return repo.findAll();
     }
 
     @Override
-    public Proyecto_Lugar findById(int id_proyecto_lugar) {
+    public ProyectoLugar findById(int id_proyecto_lugar) {
         return repo.findById(id_proyecto_lugar).orElse(null);
     }
 
     @Override
-    public Proyecto_Lugar deleteById(int id_proyecto_lugar) {
-        Proyecto_Lugar PLestado= findById(id_proyecto_lugar);
+    public ProyectoLugar deleteById(int id_proyecto_lugar) {
+        ProyectoLugar PLestado= findById(id_proyecto_lugar);
         PLestado.setEs_proyecto_lugar(false);
         repo.save(PLestado);
         return PLestado;

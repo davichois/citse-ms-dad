@@ -15,7 +15,6 @@ public class TipoServiceImp implements TipoService {
     private TipoRepository tipoRepository;
 
 
-
     @Override
     public List<Tipo> findAll() {
         return tipoRepository.findAll();

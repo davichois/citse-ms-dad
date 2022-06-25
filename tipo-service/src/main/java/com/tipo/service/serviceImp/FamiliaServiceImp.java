@@ -15,7 +15,6 @@ public class FamiliaServiceImp implements FamiliaService {
     private FamiliaRepository familiaRepository;
 
 
-
     @Override
     public List<Familia> findAll() {
         return familiaRepository.findAll();

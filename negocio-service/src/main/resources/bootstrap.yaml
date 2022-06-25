@@ -5,3 +5,11 @@ spring:
     config:
       enabled: true
       uri: http://localhost:8081
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/bdo_negocio
+    username: root
+    password: davidprada27
