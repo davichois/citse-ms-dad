@@ -16,22 +16,22 @@ spring:
         - id: maestra-service
           uri: lb://maestra-service
           predicates:
-            - Path=/maestra/**
+          - Path=/maestra/**
 
         - id: negocio-service
           uri: lb://negocio-service
           predicates:
-            - Path=/negocio/**
+          - Path=/negocio/**
 
         - id: tipo-service
           uri: lb://tipo-service
           predicates:
-            - Path=/tipo/**
+          - Path=/tipo/**
 
         - id: ubigeo-service
           uri: lb://ubigeo-service
           predicates:
-            - Path=/ubigeo/**
+          - Path=/ubigeo/**
       discovery:
         locator:
           enable: true
