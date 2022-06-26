@@ -10,7 +10,7 @@ eureka:
       hostname: localhost
 
 spring:
-  clound:
+  cloud:
     gateway:
       routes:
         - id: maestra-service
