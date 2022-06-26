@@ -28,7 +28,7 @@ public class ComunidadServiceImp implements ComunidadService {
     @Override
     public Comunidad deleteById(int id_comunidad) {
         Comunidad comunidadState = findById(id_comunidad);
-        comunidadState.setEs_comunidad(false);
+        comunidadState.setEsComunidad(false);
         comunidadRepository.save(comunidadState);
         return comunidadState;
     }

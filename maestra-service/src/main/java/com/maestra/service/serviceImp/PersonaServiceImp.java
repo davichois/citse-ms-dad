@@ -28,7 +28,7 @@ public class PersonaServiceImp implements PersonaService {
     @Override
     public Persona deleteById(int id_persona) {
         Persona personaState = findById(id_persona);
-        personaState.setEs_persona(false);
+        personaState.setEsPersona(false);
         personaRepository.save(personaState);
         return personaState;
     }

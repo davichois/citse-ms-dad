@@ -3,18 +3,23 @@ package com.maestra.service.entity;
 import lombok.Data;
 import javax.persistence.*;
 
+@Entity
+@Table(name = "TMA_COMUNIDADES")
 @Data
 public class Comunidad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_comunidad;
+    @Column(name = "id_comunidad")
+    private Integer idComunidad;
 
-    private String no_comunidad;
+    @Column(name = "no_comunidad")
+    private String noComunidad;
 
-    private Integer nu_beneficiarios;
+    @Column(name = "nu_beneficiarios")
+    private Integer nuBeneficiarios;
 
-    @Column(name = "es_comunidad", columnDefinition = "BIT")
-    private Boolean es_comunidad;
+    @Column(name = "es_comunidad")
+    private Boolean esComunidad;
 
 }

@@ -11,27 +11,37 @@ public class Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_persona;
+    @Column(name = "id_persona")
+    private Integer idPersona;
 
-    private String no_persona;
+    @Column(name = "no_persona")
+    private String noPersona;
 
-    private String ap_paterno;
+    @Column(name = "ap_paterno")
+    private String apPaterno;
 
-    private String ap_materno;
+    @Column(name = "ap_materno")
+    private String apMaterno;
 
-    private String nu_indentificacion;
+    @Column(name = "nu_indentificacion")
+    private String nuIndentificacion;
 
-    private String fe_nacimiento;
+    @Column(name = "fe_nacimiento")
+    private String feNacimiento;
 
     @Column(name = "es_persona", columnDefinition = "BIT")
-    private Boolean es_persona;
+    private Boolean esPersona;
 
-    private Integer id_ti_indentificacion;
+    @Column(name = "id_ti_indentificacion")
+    private Integer idTiIndentificacion;
 
-    private Integer id_ti_persona;
+    @Column(name = "id_ti_persona")
+    private Integer idTiPersona;
 
-    private Integer id_comunidad;
+    @Column(name = "id_comunidad")
+    private Integer idComunidad;
 
-    private Integer id_ti_es_civil;
+    @Column(name = "id_ti_es_civil")
+    private Integer idTiEsCivil;
 
 }
