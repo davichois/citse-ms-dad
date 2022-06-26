@@ -3,10 +3,12 @@ package com.ubigeo.service.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="TAX_DEPARTAMENTOS")
+@Table(name="TMA_DEPARTAMENTOS")
 @Data
 public class Departamento {
 
@@ -18,6 +20,6 @@ public class Departamento {
     @Column(name = "no_departamento")
     private String noDepartamento;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id_departamento")
-    private List<Provincia> provincias;
+    @OneToMany(mappedBy = "id_departamento")
+    private Set<Provincia> provincias = new HashSet<>();
 }

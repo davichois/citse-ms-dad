@@ -1,12 +1,15 @@
 package com.ubigeo.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name="TAX_PROVINCIAS")
+@Table(name="TMA_PROVINCIAS")
 @Data
 public class Provincia {
 
@@ -18,10 +21,11 @@ public class Provincia {
     @Column(name = "no_provincia")
     private String noProvincia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_departamento")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer id_departamento;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "id_provincia")
-    private List<Distrito> distritos;
+    @OneToMany(mappedBy = "id_provincia")
+    private Set<Distrito> distritos = new HashSet<>();
 }

@@ -1,11 +1,12 @@
 package com.ubigeo.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TAX_DISTRITOS")
+@Table(name="TMA_DISTRITOS")
 @Data
 public class Distrito {
 
@@ -17,7 +18,8 @@ public class Distrito {
     @Column(name = "no_distrito")
     private String noDistrito;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_provincia")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Integer id_provincia;
 }
