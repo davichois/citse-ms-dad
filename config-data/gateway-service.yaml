@@ -14,7 +14,7 @@ spring:
     gateway:
       routes:
         - id: maestra-service
-          uri: lb://maestra-service
+          uri: http://maestra-service
           predicates:
           - Path=/maestra/**
 
