@@ -23,7 +23,7 @@ public class Persona {
     @Column(name = "ap_materno")
     private String apMaterno;
 
-    @Column(name = "nu_indentificacion")
+    @Column(name = "nu_identificacion")
     private String nuIndentificacion;
 
     @Column(name = "fe_nacimiento")
@@ -32,7 +32,7 @@ public class Persona {
     @Column(name = "es_persona", columnDefinition = "BIT")
     private Boolean esPersona;
 
-    @Column(name = "id_ti_indentificacion")
+    @Column(name = "id_ti_identificacion")
     private Integer idTiIndentificacion;
 
     @Column(name = "id_ti_persona")
