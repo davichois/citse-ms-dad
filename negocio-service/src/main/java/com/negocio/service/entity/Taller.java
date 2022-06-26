@@ -12,20 +12,26 @@ public class Taller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_taller;
+    @Column(name = "id_taller")
+    private Integer idTaller;
 
-    private String no_taller;
+    @Column(name = "no_taller")
+    private String noTaller;
 
-    private String obj_taller;
+    @Column(name = "obj_taller")
+    private String objTaller;
 
-    private String de_taller;
+    @Column(name = "de_taller")
+    private String deTaller;
 
-    private String fe_inicio;
+    @Column(name = "fe_inicio")
+    private String feInicio;
 
-    private String fe_fin;
+    @Column(name = "fe_fin")
+    private String feFin;
 
-    @Column(name = "es_taller", columnDefinition = "BIT")
-    private Boolean es_taller;
+    @Column(name = "es_taller")
+    private Boolean esTaller;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_programa")

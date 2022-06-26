@@ -28,7 +28,7 @@ public class TallerServiceImp implements TallerService {
     @Override
     public Taller deleteById(int id_taller) {
         Taller tallerState = findById(id_taller);
-        tallerState.setEs_taller(false);
+        tallerState.setEsTaller(false);
         tallerRepository.save(tallerState);
         return tallerState;
     }

@@ -28,7 +28,7 @@ public class ProgramaServiceImp implements ProgramaService {
     @Override
     public Programa deleteById(int id_programa) {
         Programa programaState = findById(id_programa);
-        programaState.setEs_programa(false);
+        programaState.setEsPrograma(false);
         programaRepository.save(programaState);
         return programaState;
     }

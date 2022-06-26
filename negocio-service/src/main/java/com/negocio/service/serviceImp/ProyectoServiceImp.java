@@ -28,7 +28,7 @@ public class ProyectoServiceImp implements ProyectoService {
     @Override
     public Proyecto deleteById(int id_proyecto) {
         Proyecto proyectoState = findById(id_proyecto);
-        proyectoState.setEs_proyecto(false);
+        proyectoState.setEsProyecto(false);
         proyectoRepository.save(proyectoState);
         return proyectoState;
     }
