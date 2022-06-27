@@ -18,6 +18,8 @@ spring:
           uri: lb://maestra-service
           predicates:
             - Path=/maestra/**
+          filters:
+            - StripPrefix=1
 
         - id: negocio-service
           uri: lb://negocio-service
