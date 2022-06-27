@@ -20,21 +20,28 @@ spring:
             - Path=/maestra/**
           filters:
             - StripPrefix=1
-
+            
         - id: negocio-service
           uri: lb://negocio-service
           predicates:
             - Path=/negocio/**
+          filters:
+            - StripPrefix=1
 
         - id: tipo-service
           uri: lb://tipo-service
           predicates:
             - Path=/tipo/**
+          filters:
+            - StripPrefix=1
 
         - id: ubigeo-service
           uri: lb://ubigeo-service
           predicates:
             - Path=/ubigeo/**
+          filters:
+            - StripPrefix=1
+            
       discovery:
         locator:
           enable: true

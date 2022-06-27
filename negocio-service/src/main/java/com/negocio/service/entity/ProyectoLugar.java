@@ -20,11 +20,12 @@ public class ProyectoLugar {
     @Column(name = "id_distrito")
     private Integer idDistrito;
 
+    @Column(name = "es_proyecto_lugar", columnDefinition = "BIT")
+    private Boolean esProyectoLugar;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_proyecto")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Proyecto proyecto;
 
-    @Column(name = "es_proyecto_lugar", columnDefinition = "BIT")
-    private Boolean es_proyecto_lugar;
 }
