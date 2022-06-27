@@ -35,10 +35,10 @@ spring:
           filters:
             - StripPrefix=1
 
-        - id: ubigeo-service
-          uri: lb://ubigeo-service
+        - id: cuestionario-service
+          uri: lb://cuestionario-service
           predicates:
-            - Path=/ubigeo/**
+            - Path=/cuestionario/**
           filters:
             - StripPrefix=1
             
