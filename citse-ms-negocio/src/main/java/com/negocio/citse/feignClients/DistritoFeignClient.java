@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@FeignClient(name = "ubigeo-service")//url = "http://localhost:8001/ms/distrito")
+@FeignClient(name = "citse-ms-ubigeo")
 @RequestMapping("/ms/distrito")
 public interface DistritoFeignClient {
 

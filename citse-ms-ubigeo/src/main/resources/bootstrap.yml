@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ubigeo-service
+    name: citse-ms-ubigeo
   cloud:
     config:
       enabled: true
