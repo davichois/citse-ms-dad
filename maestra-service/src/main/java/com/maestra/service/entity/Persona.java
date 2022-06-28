@@ -1,5 +1,7 @@
 package com.maestra.service.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.maestra.service.dao.Tipo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -43,5 +45,10 @@ public class Persona {
 
     @Column(name = "id_ti_es_civil")
     private Integer idTiEsCivil;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "id_comunidad", insertable = false, updatable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private Comunidad comunidad;
 
 }

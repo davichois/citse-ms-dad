@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,12 +36,12 @@ public class Proyecto {
     private Boolean esProyecto;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
-    private Set<Programa> programas = new HashSet<>();
+    private List<Programa> programas;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
-    private Set<EntidadProyecto> entidades = new HashSet<>();;
+    private List<EntidadProyecto> entidades;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)
-    private Set<ProyectoLugar> lugares = new HashSet<>();;
+    private List<ProyectoLugar> lugares;
 
 }

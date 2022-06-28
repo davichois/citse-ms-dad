@@ -3,8 +3,7 @@ package com.tipo.service.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "TAX_FAMILIAS")
@@ -20,13 +19,6 @@ public class Familia {
     private String noFamilia;
 
     @OneToMany(mappedBy = "familia", cascade = CascadeType.ALL)
-    private Set<Tipo> tipos = new HashSet<>();
+    private List<Tipo> tipos;
 
-
-    public void setTipos(Set<Tipo> tipos) {
-        this.tipos = tipos;
-        for (Tipo tipo: tipos){
-            tipo.setFamilia(this);
-        }
-    }
 }

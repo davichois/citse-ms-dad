@@ -2,6 +2,7 @@ package com.maestra.service.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "TMA_COMUNIDADES")
@@ -21,5 +22,8 @@ public class Comunidad {
 
     @Column(name = "es_comunidad")
     private Boolean esComunidad;
+
+    @OneToMany(mappedBy = "comunidad", cascade = CascadeType.ALL)
+    List<Persona> personas;
 
 }
