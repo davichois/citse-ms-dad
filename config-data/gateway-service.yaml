@@ -14,28 +14,21 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: maestra-service
+        - id: citse-ms-maestra
           uri: lb://maestra-service
           predicates:
             - Path=/maestra/**
           filters:
             - StripPrefix=1
-            
-        - id: negocio-service
-          uri: lb://negocio-service
-          predicates:
-            - Path=/negocio/**
-          filters:
-            - StripPrefix=1
 
-        - id: tipo-service
+        - id: citse-ms-tipo
           uri: lb://tipo-service
           predicates:
             - Path=/tipo/**
           filters:
             - StripPrefix=1
 
-        - id: cuestionario-service
+        - id: citse-ms-cuestionario
           uri: lb://cuestionario-service
           predicates:
             - Path=/cuestionario/**
