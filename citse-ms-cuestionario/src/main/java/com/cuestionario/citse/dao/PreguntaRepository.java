@@ -1,4 +1,4 @@
-package com.cuestionario.citse.repository;
+package com.cuestionario.citse.dao;
 
 import com.cuestionario.citse.entity.Pregunta;
 import org.springframework.data.jpa.repository.JpaRepository;

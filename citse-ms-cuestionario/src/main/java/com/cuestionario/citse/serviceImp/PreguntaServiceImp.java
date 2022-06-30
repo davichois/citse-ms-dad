@@ -1,7 +1,7 @@
 package com.cuestionario.citse.serviceImp;
 
 import com.cuestionario.citse.entity.Pregunta;
-import com.cuestionario.citse.repository.PreguntaRepository;
+import com.cuestionario.citse.dao.PreguntaRepository;
 import com.cuestionario.citse.service.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

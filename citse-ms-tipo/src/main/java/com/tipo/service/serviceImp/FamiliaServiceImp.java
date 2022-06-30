@@ -1,7 +1,7 @@
 package com.tipo.service.serviceImp;
 
 import com.tipo.service.entity.Familia;
-import com.tipo.service.repository.FamiliaRepository;
+import com.tipo.service.dao.FamiliaRepository;
 import com.tipo.service.service.FamiliaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.tipo.service.repository;
+package com.tipo.service.dao;
 
 import com.tipo.service.entity.Tipo;
 import org.springframework.data.jpa.repository.JpaRepository;
