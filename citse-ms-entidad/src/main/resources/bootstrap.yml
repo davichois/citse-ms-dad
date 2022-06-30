@@ -1,6 +1,6 @@
 spring:
   application:
-    name: entidad-service
+    name: citse-ms-entidad
   cloud:
     config:
       enabled: true

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: negocio-service
+    name: citse-ms-negocio
   cloud:
     config:
       enabled: true
