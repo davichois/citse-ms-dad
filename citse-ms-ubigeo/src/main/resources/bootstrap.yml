@@ -1,10 +1,12 @@
 spring:
   application:
-    name: citse-ms-ubigeo
+    name: ubigeo-service
   cloud:
     config:
       enabled: true
       uri: http://localhost:8081
+      username: root
+      password: 123
   jpa:
     hibernate:
       ddl-auto: none

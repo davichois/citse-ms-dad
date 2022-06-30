@@ -3,6 +3,8 @@ package com.negocio.citse.service.serviceImp;
 import com.negocio.citse.dao.EntidadProyectoDao;
 import com.negocio.citse.entity.EntidadProyecto;
 import com.negocio.citse.entity.Proyecto;
+import com.negocio.citse.feignClients.EntidadFeignClient;
+import com.negocio.citse.models.Entidad;
 import com.negocio.citse.service.EntidadProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class EntidadProyectoServiceImp implements EntidadProyectoService {
     @Autowired
     private EntidadProyectoDao repo;
 
+    @Autowired
+    private EntidadFeignClient entidadFeignClient;
+
     @Override
     public List<EntidadProyecto> findAll() {
         return repo.findAll();
@@ -22,7 +27,12 @@ public class EntidadProyectoServiceImp implements EntidadProyectoService {
 
     @Override
     public EntidadProyecto findById(Integer id) {
-        return repo.findById(id).orElse(null);
+        EntidadProyecto ep = repo.findById(id).orElse(null);
+        if(ep!=null){
+            Entidad entidad = entidadFeignClient.getEntidad(ep.getEntidad()).getBody();
+            ep.setDetallEntidad(entidad);
+        }
+        return ep;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.negocio.citse.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.negocio.citse.models.Entidad;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -17,6 +19,9 @@ public class EntidadProyecto implements Serializable {
 
     @Column(name = "ID_ENTIDAD")
     private Integer entidad;
+
+    @Transient
+    private Entidad detallEntidad;
 
     @Column(name = "ES_ENTIDAD_PROYECTO")
     private Boolean esEntidadProyecto;
