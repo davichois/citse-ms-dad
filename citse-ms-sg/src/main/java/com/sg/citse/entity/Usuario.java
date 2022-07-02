@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tsg_usuarios")
@@ -23,5 +24,12 @@ public class Usuario implements Serializable {
 
     @Column(name = "es_usuario")
     private Boolean esUsuario;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "tsg_usuario_rol",
+            joinColumns = @JoinColumn(name = "id_usuario"),
+            inverseJoinColumns = @JoinColumn(name = "id_rol"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"id_usuario", "id_rol"})})
+    private List<Role> roles;
 
 }
