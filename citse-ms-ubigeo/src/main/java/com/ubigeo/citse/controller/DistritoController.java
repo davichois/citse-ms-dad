@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/distrito")
+@RequestMapping("distrito")
 public class DistritoController {
 
     @Autowired

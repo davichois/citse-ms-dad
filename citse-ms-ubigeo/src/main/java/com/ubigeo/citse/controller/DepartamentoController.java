@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/departamento")
+@RequestMapping("departamento")
 @Api(value = "Gestion de departamentos", description = "Microservicio de departamentos")
 public class DepartamentoController {
 
