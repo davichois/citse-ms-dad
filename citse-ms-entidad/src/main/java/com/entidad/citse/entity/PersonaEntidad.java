@@ -1,5 +1,7 @@
 package com.entidad.citse.entity;
 
+import com.entidad.citse.models.Persona;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,8 +18,12 @@ public class PersonaEntidad implements Serializable {
     @Column(name = "ID_PERSONA_ENTIDAD")
     private Integer id;
 
+    @JsonIgnore
     @Column(name = "ID_PERSONA")
-    private Integer Persona;
+    private Integer idPersona;
+
+    @Transient
+    private Persona persona;
 
     @ManyToOne
     @JoinColumn(name = "ID_ENTIDAD")

@@ -21,6 +21,16 @@ public class PersonaServiceImp implements PersonaService {
     }
 
     @Override
+    public List<Persona> findTop10ByNoPersonaContains(String nombre) {
+        return personaRepository.findTop10ByNoPersonaContains(nombre);
+    }
+
+    @Override
+    public Persona findByNuIndentificacion(String numero) {
+        return personaRepository.findByNuIndentificacion(numero);
+    }
+
+    @Override
     public Persona findById(int id_persona) {
         return personaRepository.findById(id_persona).orElseThrow();
     }
@@ -31,5 +41,10 @@ public class PersonaServiceImp implements PersonaService {
         personaState.setEsPersona(false);
         personaRepository.save(personaState);
         return personaState;
+    }
+
+    @Override
+    public Persona save(Persona persona) {
+        return personaRepository.save(persona);
     }
 }

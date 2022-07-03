@@ -54,7 +54,6 @@ public class CuestionarioController {
         c.setNoCuestionario(cuestionario.getNoCuestionario());
         c.setFeFin(cuestionario.getFeInicio());
         c.setFeFin(cuestionario.getFeFin());
-        c.setPreguntas(cuestionario.getPreguntas());
         return cuestionarioService.save(c);
     }
 

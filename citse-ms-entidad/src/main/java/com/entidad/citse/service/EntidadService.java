@@ -10,4 +10,6 @@ public interface EntidadService {
     public void deleteById(Integer id);
 
     public List<Entidad> findByAlias(String alias);
+    public List<Entidad> findByNombre(String nombre);
+    public Entidad save(Entidad entidad);
 }

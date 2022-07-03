@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/personaentidad")
+@RequestMapping("personaEntidad")
 public class PersonaEntidadController {
 
     @Autowired
@@ -23,5 +23,19 @@ public class PersonaEntidadController {
     @GetMapping("/{id}")
     public PersonaEntidad findById(@PathVariable Integer id){
         return service.findById(id);
+    }
+
+    @PostMapping
+    public PersonaEntidad save(@RequestBody PersonaEntidad personaEntidad){
+        return service.save(personaEntidad);
+    }
+
+    @PutMapping("/{id}")
+    public PersonaEntidad update(@RequestBody PersonaEntidad personaEntidad, @PathVariable Integer id){
+        PersonaEntidad pe = service.findById(id);
+        pe.setEntidad(personaEntidad.getEntidad());
+        pe.setPersona(personaEntidad.getPersona());
+        service.save(pe);
+        return pe;
     }
 }

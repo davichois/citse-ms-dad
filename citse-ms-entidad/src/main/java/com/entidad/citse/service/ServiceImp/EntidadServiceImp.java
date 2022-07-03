@@ -31,6 +31,16 @@ public class EntidadServiceImp implements EntidadService {
 
     @Override
     public List<Entidad> findByAlias(String alias){
-        return entidadDao.findByAlias(alias);
+        return entidadDao.findTop10ByAliasContains(alias);
+    }
+
+    @Override
+    public List<Entidad> findByNombre(String nombre) {
+        return entidadDao.findTop10ByNombreContains(nombre);
+    }
+
+    @Override
+    public Entidad save(Entidad entidad) {
+        return entidadDao.save(entidad);
     }
 }
