@@ -1,6 +1,8 @@
 package com.maestra.citse.serviceImp;
 
 import com.maestra.citse.entity.Persona;
+import com.maestra.citse.feignClients.TipoFeignClient;
+import com.maestra.citse.models.Tipo;
 import com.maestra.citse.repository.PersonaRepository;
 import com.maestra.citse.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class PersonaServiceImp implements PersonaService {
     @Autowired
     private PersonaRepository personaRepository;
 
+    @Autowired
+    private TipoFeignClient tipoFeignClient;
 
     @Override
     public List<Persona> findAll() {
@@ -32,7 +36,16 @@ public class PersonaServiceImp implements PersonaService {
 
     @Override
     public Persona findById(int id_persona) {
-        return personaRepository.findById(id_persona).orElseThrow();
+        Persona p = personaRepository.findById(id_persona).orElse(null);
+        if(p!=null){
+            Tipo tipoIdentificacion = tipoFeignClient.findById(p.getIdTiIndentificacion()).getBody();
+            p.setTipoIdentificacion(tipoIdentificacion);
+            Tipo tipoPersona = tipoFeignClient.findById(p.getIdTiPersona()).getBody();
+            p.setTipoPersona(tipoPersona);
+            Tipo esCivil = tipoFeignClient.findById(p.getIdTiEsCivil()).getBody();
+            p.setEsCivil(esCivil);
+        }
+        return p;
     }
 
     @Override

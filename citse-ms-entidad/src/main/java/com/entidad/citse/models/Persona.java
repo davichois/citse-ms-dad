@@ -1,5 +1,9 @@
 package com.entidad.citse.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Transient;
 
 @Data
 public class Persona {
@@ -11,9 +15,8 @@ public class Persona {
     private String nuIndentificacion;
     private String feNacimiento;
     private Boolean esPersona;
-    private Integer idTiIndentificacion;
-    private Integer idTiPersona;
-    private Integer idComunidad;
-    private Integer idTiEsCivil;
-    private Comunidad comunidad;
+    private Tipo tipoIdentificacion;
+    private Tipo tipoPersona;
+    private Tipo esCivil;
+
 }

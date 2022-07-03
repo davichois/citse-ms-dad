@@ -23,7 +23,7 @@ public class TipoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tipo> findById(@PathVariable int id){
+    public ResponseEntity<Tipo> findById(@PathVariable Integer id){
         Tipo tipo = tipoService.findById(id);
 
         if (tipo != null){
