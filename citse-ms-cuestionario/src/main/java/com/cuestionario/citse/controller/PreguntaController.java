@@ -4,10 +4,7 @@ import com.cuestionario.citse.entity.Pregunta;
 import com.cuestionario.citse.service.PreguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class PreguntaController {
     private PreguntaService preguntaService;
 
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<List<Pregunta>> findAll(){
         return ResponseEntity.ok().body(preguntaService.findAll());
     }
@@ -34,5 +31,20 @@ public class PreguntaController {
             return ResponseEntity.noContent().build();
         }
     }
+
+    @PostMapping
+    public Pregunta save(@RequestBody Pregunta pregunta){
+        return preguntaService.save(pregunta);
+    }
+
+    @PutMapping("/{id}")
+    public Pregunta update(@RequestBody Pregunta pregunta,@PathVariable Integer id){
+        Pregunta p = preguntaService.findById(id);
+        p.setDescPregunta(pregunta.getDescPregunta());
+        p.setCuestionario(pregunta.getCuestionario());
+        preguntaService.save(p);
+        return p;
+    }
+
 
 }

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,10 +26,10 @@ public class Cuestionario {
     @Column(name = "fe_fin")
     private String feFin;
 
-    @Column(name = "es_cuestionario")
+    @Column(name = "es_cuestionario",columnDefinition = "BIT")
     private Boolean esCuestionario;
 
     @OneToMany(mappedBy = "cuestionario", cascade = CascadeType.ALL)
-    private Set<Pregunta> preguntas = new HashSet<>();
+    private List<Pregunta> preguntas;
 
 }

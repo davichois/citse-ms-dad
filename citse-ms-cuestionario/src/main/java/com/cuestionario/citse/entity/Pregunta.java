@@ -1,5 +1,6 @@
 package com.cuestionario.citse.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -12,15 +13,15 @@ public class Pregunta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_preguntas")
+    @Column(name = "id_pregunta")
     private Integer idPregunta;
 
     @Column(name = "desc_pregunta")
     private String descPregunta;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_cuestionario")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Cuestionario cuestionario;
 
 }

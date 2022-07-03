@@ -27,7 +27,7 @@ public class DistritoController {
             if(distritos.isEmpty())
                 return ResponseEntity.noContent().build();
         }else if(nombre!=null){
-            distritos=service.findByNoDistrito(nombre);
+            distritos=service.findTop10ByNoDistritoContains(nombre);
             if(distritos.isEmpty())
                 return ResponseEntity.notFound().build();
         }else {

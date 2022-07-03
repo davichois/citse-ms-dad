@@ -13,6 +13,9 @@ eureka:
 spring:
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: citse-ms-maestra
           uri: lb://maestra-service

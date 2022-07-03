@@ -4,11 +4,9 @@ import com.cuestionario.citse.entity.Cuestionario;
 import com.cuestionario.citse.service.CuestionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,9 +17,19 @@ public class CuestionarioController {
     private CuestionarioService cuestionarioService;
 
 
-    @GetMapping("/")
-    public ResponseEntity<List<Cuestionario>> findAll(){
-        return ResponseEntity.ok().body(cuestionarioService.findAll());
+    @GetMapping
+    public ResponseEntity<List<Cuestionario>> findAll(@RequestParam(name = "nombre",required = false)String nombre){
+        List<Cuestionario> cues = new ArrayList<>();
+        if(nombre==null){
+            cues=cuestionarioService.findAll();
+            if(cues.isEmpty())
+                return ResponseEntity.noContent().build();
+        }else {
+            cues=cuestionarioService.findByNombre(nombre);
+            if(cues.isEmpty())
+                return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(cues);
     }
 
     @GetMapping("/{id}")
@@ -35,4 +43,26 @@ public class CuestionarioController {
         }
     }
 
+    @PostMapping
+    public Cuestionario save(@RequestBody Cuestionario cuestionario){
+        return cuestionarioService.save(cuestionario);
+    }
+
+    @PutMapping("/{id}")
+    public Cuestionario update(@RequestBody Cuestionario cuestionario,@PathVariable Integer id){
+        Cuestionario c = cuestionarioService.findById(id);
+        c.setNoCuestionario(cuestionario.getNoCuestionario());
+        c.setFeFin(cuestionario.getFeInicio());
+        c.setFeFin(cuestionario.getFeFin());
+        c.setPreguntas(cuestionario.getPreguntas());
+        return cuestionarioService.save(c);
+    }
+
+    @DeleteMapping("/{id}")
+    public Cuestionario delete(@PathVariable Integer id){
+        Cuestionario c = cuestionarioService.findById(id);
+        c.setEsCuestionario(false);
+        cuestionarioService.save(c);
+        return c;
+    }
 }

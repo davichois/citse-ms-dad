@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ProvinciaDao extends JpaRepository<Provincia,Integer> {
-    public List<Provincia> findByNoProvincia(String noProvincia);
+    public List<Provincia> findTop10ByNoProvinciaContains(String noProvincia);
     public List<Provincia> findByDepartamento(Departamento departamento);
 }

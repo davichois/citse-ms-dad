@@ -30,7 +30,7 @@ public class ProvinciaServiceImp implements ProvinciaService {
 
     @Override
     public List<Provincia> findByNoProvincia(String noProvincia){
-        return repo.findByNoProvincia(noProvincia);
+        return repo.findTop10ByNoProvinciaContains(noProvincia);
     }
 
     @Override

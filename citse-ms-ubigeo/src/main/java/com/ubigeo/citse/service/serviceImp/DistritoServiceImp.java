@@ -29,8 +29,8 @@ public class DistritoServiceImp implements DistritoService {
     }
 
     @Override
-    public List<Distrito> findByNoDistrito(String noDistrito){
-        return repo.findByNoDistrito(noDistrito);
+    public List<Distrito> findTop10ByNoDistritoContains(String noDistrito){
+        return repo.findTop10ByNoDistritoContains(noDistrito);
     }
 
     @Override
