@@ -37,7 +37,28 @@ spring:
             - Path=/cuestionario/**
           filters:
             - StripPrefix=1
-            
+
+        - id: citse-ms-ubigeo
+          uri: lb://ubigeo-service
+          predicates:
+            - Path=/ubigeo/**
+          filters:
+            - StripPrefix=1
+
+        - id: citse-ms-entidad
+          uri: lb://entidad-service
+          predicates:
+            - Path=/entidad/**
+          filters:
+            - StripPrefix=1
+
+        - id: citse-ms-negocio
+          uri: lb://negocio-service
+          predicates:
+            - Path=/negocio/**
+          filters:
+            - StripPrefix=1
+
       discovery:
         locator:
           enable: true
