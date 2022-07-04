@@ -20,21 +20,21 @@ spring:
         - id: citse-ms-maestra
           uri: lb://citse-ms-maestra
           predicates:
-            - Path=/maestra/**
+            - Path=/maestras/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-tipo
           uri: lb://citse-ms-tipo
           predicates:
-            - Path=/tipo/**
+            - Path=/tipos/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-cuestionario
           uri: lb://citse-ms-cuestionario
           predicates:
-            - Path=/cuestionario/**
+            - Path=/cuestionarios/**
           filters:
             - StripPrefix=1
 
