@@ -46,4 +46,8 @@ public class Programa implements Serializable {
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "programa")
     private List<Taller> talleres;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "programa")
+    private List<PersonaPrograma> personas;
 }

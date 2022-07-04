@@ -49,9 +49,6 @@ public class Persona {
     @Transient
     private Tipo tipoPersona;
 
-    @Column(name = "id_comunidad")
-    private Integer idComunidad;
-
     @JsonIgnore
     @Column(name = "id_ti_es_civil")
     private Integer idTiEsCivil;
@@ -60,7 +57,7 @@ public class Persona {
     private Tipo esCivil;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "id_comunidad", insertable = false, updatable = false)
+    @JoinColumn(name = "id_comunidad")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Comunidad comunidad;
 
