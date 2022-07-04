@@ -20,44 +20,44 @@ spring:
         - id: citse-ms-maestra
           uri: lb://citse-ms-maestra
           predicates:
-            - Path=/maestras/**
+            - Path=/api/maestra/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         - id: citse-ms-tipo
           uri: lb://citse-ms-tipo
           predicates:
-            - Path=/tipos/**
+            - Path=/api/tipo/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         - id: citse-ms-cuestionario
           uri: lb://citse-ms-cuestionario
           predicates:
-            - Path=/cuestionarios/**
+            - Path=/api/cuestionario/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         - id: citse-ms-ubigeo
           uri: lb://citse-ms-ubigeo
           predicates:
-            - Path=/ubigeo/**
+            - Path=/api/ubigeo/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         - id: citse-ms-entidad
           uri: lb://citse-ms-entidad
           predicates:
-            - Path=/entidades/**
+            - Path=/api/entidad/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
 
         - id: citse-ms-negocio
           uri: lb://citse-ms-negocio
           predicates:
-            - Path=/negocio/**
+            - Path=/api/negocio/**
           filters:
-            - StripPrefix=1
+            - StripPrefix=2
       globalcors:
         cors-configurations:
           "[/**]":
