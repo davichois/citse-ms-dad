@@ -58,10 +58,6 @@ spring:
             - Path=/negocio/**
           filters:
             - StripPrefix=1
-
-      discovery:
-        locator:
-          enable: true
       globalcors:
         cors-configurations:
           "[/**]":

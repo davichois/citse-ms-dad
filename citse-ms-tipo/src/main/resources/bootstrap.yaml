@@ -11,5 +11,5 @@ spring:
 
   datasource:
     url: jdbc:mysql://localhost:3306/bdo_tipo
-    username: root
+    username: CITSE
     password: 123456
