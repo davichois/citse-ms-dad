@@ -18,42 +18,42 @@ spring:
           enabled: true
       routes:
         - id: citse-ms-maestra
-          uri: lb://maestra-service
+          uri: lb://citse-ms-maestra
           predicates:
             - Path=/maestra/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-tipo
-          uri: lb://tipo-service
+          uri: lb://citse-ms-tipo
           predicates:
             - Path=/tipo/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-cuestionario
-          uri: lb://cuestionario-service
+          uri: lb://citse-ms-cuestionario
           predicates:
             - Path=/cuestionario/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-ubigeo
-          uri: lb://ubigeo-service
+          uri: lb://citse-ms-ubigeo
           predicates:
             - Path=/ubigeo/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-entidad
-          uri: lb://entidad-service
+          uri: lb://citse-ms-entidad
           predicates:
-            - Path=/entidad/**
+            - Path=/entidades/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-negocio
-          uri: lb://negocio-service
+          uri: lb://citse-ms-negocio
           predicates:
             - Path=/negocio/**
           filters:
