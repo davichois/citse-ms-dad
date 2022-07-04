@@ -14,4 +14,6 @@ public interface DistritoFeignClient {
 
     @GetMapping("/{id}")
     public ResponseEntity<Distrito> getDistrito(@PathVariable("id") Integer id);
+
+    //TODO:issue al conectar con ubigeo
 }
