@@ -10,4 +10,5 @@ public interface PreguntaService {
 
     Pregunta findById(int id_pregunta);
 
+    Pregunta save(Pregunta pregunta);
 }

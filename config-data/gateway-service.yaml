@@ -13,28 +13,52 @@ eureka:
 spring:
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: citse-ms-maestra
-          uri: lb://maestra-service
+          uri: lb://citse-ms-maestra
           predicates:
-            - Path=/maestra/**
+            - Path=/maestras/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-tipo
-          uri: lb://tipo-service
+          uri: lb://citse-ms-tipo
           predicates:
-            - Path=/tipo/**
+            - Path=/tipos/**
           filters:
             - StripPrefix=1
 
         - id: citse-ms-cuestionario
-          uri: lb://cuestionario-service
+          uri: lb://citse-ms-cuestionario
           predicates:
-            - Path=/cuestionario/**
+            - Path=/cuestionarios/**
           filters:
             - StripPrefix=1
-            
+
+        - id: citse-ms-ubigeo
+          uri: lb://citse-ms-ubigeo
+          predicates:
+            - Path=/ubigeo/**
+          filters:
+            - StripPrefix=1
+
+        - id: citse-ms-entidad
+          uri: lb://citse-ms-entidad
+          predicates:
+            - Path=/entidades/**
+          filters:
+            - StripPrefix=1
+
+        - id: citse-ms-negocio
+          uri: lb://citse-ms-negocio
+          predicates:
+            - Path=/negocio/**
+          filters:
+            - StripPrefix=1
+
       discovery:
         locator:
           enable: true

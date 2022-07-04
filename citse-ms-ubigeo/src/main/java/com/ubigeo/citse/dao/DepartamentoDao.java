@@ -16,5 +16,5 @@ public interface DepartamentoDao extends JpaRepository<Departamento,Integer> {
     Page<Banco> findAllParams(String query, Pageable pageable);
 * */
 
-    public List<Departamento> findByNoDepartamento(String noDepartamento);
+    public List<Departamento> findTop10ByNoDepartamentoContains(String noDepartamento);
 }

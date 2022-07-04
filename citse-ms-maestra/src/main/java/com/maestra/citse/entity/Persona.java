@@ -1,6 +1,8 @@
 package com.maestra.citse.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.maestra.citse.models.Tipo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -33,17 +35,29 @@ public class Persona {
     @Column(name = "es_persona", columnDefinition = "BIT")
     private Boolean esPersona;
 
+    @JsonIgnore
     @Column(name = "id_ti_identificacion")
     private Integer idTiIndentificacion;
 
+    @Transient
+    private Tipo tipoIdentificacion;
+
+    @JsonIgnore
     @Column(name = "id_ti_persona")
     private Integer idTiPersona;
+
+    @Transient
+    private Tipo tipoPersona;
 
     @Column(name = "id_comunidad")
     private Integer idComunidad;
 
+    @JsonIgnore
     @Column(name = "id_ti_es_civil")
     private Integer idTiEsCivil;
+
+    @Transient
+    private Tipo esCivil;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "id_comunidad", insertable = false, updatable = false)

@@ -24,4 +24,14 @@ public class CuestionarioServiceImp implements CuestionarioService {
     public Cuestionario findById(int id_cuestionario) {
         return cuestionarioRepository.findById(id_cuestionario).orElse(null);
     }
+
+    @Override
+    public Cuestionario save(Cuestionario cuestionario) {
+        return cuestionarioRepository.save(cuestionario);
+    }
+
+    @Override
+    public List<Cuestionario> findByNombre(String nombre) {
+        return cuestionarioRepository.findTop10ByNoCuestionarioContains(nombre);
+    }
 }

@@ -1,5 +1,6 @@
 package com.entidad.citse.entity;
 
+import com.entidad.citse.models.Tipo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -30,8 +31,12 @@ public class Entidad implements Serializable {
     @JoinColumn(name = "ID_PADRE",referencedColumnName = "ID_ENTIDAD")
     private Entidad idPadre;
 
+    @JsonIgnore
     @Column(name = "ID_TIPO_ENTIDAD")
     private Integer idTipoEntidad;
+
+    @Transient
+    private Tipo tipoEntidad;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "entidad")

@@ -12,4 +12,4 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/bdo_tipo
     username: root
-    password: davidprada27
+    password: 123456

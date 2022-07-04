@@ -29,6 +29,6 @@ public class DepartamentoServiceImp implements DepartamentoService {
 
     @Override
     public List<Departamento> findByNoDepartamento(String noDepartamento) {
-        return repo.findByNoDepartamento(noDepartamento);
+        return repo.findTop10ByNoDepartamentoContains(noDepartamento);
     }
 }

@@ -24,4 +24,9 @@ public class PreguntaServiceImp implements PreguntaService {
     public Pregunta findById(int id_pregunta) {
         return preguntaRepository.findById(id_pregunta).orElse(null);
     }
+
+    @Override
+    public Pregunta save(Pregunta pregunta) {
+        return preguntaRepository.save(pregunta);
+    }
 }

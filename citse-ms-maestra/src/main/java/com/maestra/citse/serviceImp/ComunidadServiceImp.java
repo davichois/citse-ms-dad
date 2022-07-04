@@ -32,4 +32,9 @@ public class ComunidadServiceImp implements ComunidadService {
         comunidadRepository.save(comunidadState);
         return comunidadState;
     }
+
+    @Override
+    public Comunidad save(Comunidad comunidad) {
+        return comunidadRepository.save(comunidad);
+    }
 }

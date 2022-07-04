@@ -12,4 +12,6 @@ public interface ComunidadService {
 
     Comunidad deleteById(int id_comunidad);
 
+    Comunidad save(Comunidad comunidad);
+
 }

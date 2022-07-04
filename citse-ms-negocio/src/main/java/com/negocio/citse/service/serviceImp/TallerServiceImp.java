@@ -40,7 +40,7 @@ public class TallerServiceImp implements TallerService {
 
     @Override
     public List<Taller> findByNombre(String nombre) {
-        return repo.findByNombre(nombre);
+        return repo.findTop10ByNombreContains(nombre);
     }
 
     @Override

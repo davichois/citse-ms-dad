@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/provincia")
+@RequestMapping("provincia")
 @Api(value = "Gestion de provincia", description = "Microservicio de provincia")
 public class ProvinciaController {
 

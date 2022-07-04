@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/entidadproyecto")
+@RequestMapping("entidadProyecto")
 public class EntidadProyectoController {
 
     @Autowired
@@ -45,7 +45,6 @@ public class EntidadProyectoController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteById(@PathVariable Integer id){
         service.deleteById(id);
         return ResponseEntity.ok().build();
