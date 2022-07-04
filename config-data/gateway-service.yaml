@@ -20,32 +20,44 @@ spring:
         - id: citse-ms-maestra
           uri: lb://citse-ms-maestra
           predicates:
-            - Path=/persona/**
+            - Path=/maestra/**
+          filters:
+            - StripPrefix=1
 
         - id: citse-ms-tipo
           uri: lb://citse-ms-tipo
           predicates:
             - Path=/tipo/**
+          filters:
+            - StripPrefix=1
 
         - id: citse-ms-cuestionario
           uri: lb://citse-ms-cuestionario
           predicates:
             - Path=/cuestionario/**
+          filters:
+            - StripPrefix=1
 
         - id: citse-ms-ubigeo
           uri: lb://citse-ms-ubigeo
           predicates:
-            - Path=/departamento/**
+            - Path=/ubigeo/**
+          filters:
+            - StripPrefix=1
 
         - id: citse-ms-entidad
           uri: lb://citse-ms-entidad
           predicates:
-            - Path=/entidad/**
+            - Path=/entidades/**
+          filters:
+            - StripPrefix=1
 
         - id: citse-ms-negocio
           uri: lb://citse-ms-negocio
           predicates:
-            - Path=/proyecto/**
+            - Path=/negocio/**
+          filters:
+            - StripPrefix=1
 
       discovery:
         locator:
