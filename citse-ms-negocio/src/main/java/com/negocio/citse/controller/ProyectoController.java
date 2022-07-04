@@ -16,6 +16,7 @@ public class ProyectoController {
     @Autowired
     private ProyectoService service;
 
+
     @GetMapping("/")
     public List<Proyecto> findAll(){
         return service.findAll();
@@ -27,28 +28,25 @@ public class ProyectoController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Proyecto crear(@RequestBody Proyecto proyecto){
+    public Proyecto save(@RequestBody Proyecto proyecto){
         return service.save(proyecto);
     }
 
     @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public Proyecto update(@RequestBody Proyecto proyecto, @PathVariable Integer id){
         Proyecto p = service.findById(id);
-        p.setNoProyecto(proyecto.getNoProyecto());
-        p.setObjProyecto(proyecto.getObjProyecto());
-        p.setDeProyecto(proyecto.getDeProyecto());
-        p.setFeInicio(proyecto.getFeInicio());
-        p.setFeFin(proyecto.getFeFin());
+        p.setNombre(proyecto.getNombre());
+        p.setObjetivo(proyecto.getObjetivo());
+        p.setDescripcion(proyecto.getDescripcion());
+        p.setInicio(proyecto.getInicio());
+        p.setFin(proyecto.getFin());
         return service.save(p);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
     public Proyecto deleteById(@PathVariable Integer id){
         Proyecto p = service.findById(id);
-        p.setEsProyecto(false);
+        p.setEstado(false);
         service.save(p);
         return p;
     }

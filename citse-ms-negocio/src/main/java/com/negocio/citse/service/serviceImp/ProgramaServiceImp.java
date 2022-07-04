@@ -33,7 +33,7 @@ public class ProgramaServiceImp implements ProgramaService {
     @Override
     public Programa deleteById(Integer id) {
         Programa p = findById(id);
-        p.setEsPrograma(false);
+        p.setEstado(false);
         repo.save(p);
         return p;
     }
@@ -45,6 +45,6 @@ public class ProgramaServiceImp implements ProgramaService {
 
     @Override
     public List<Programa> findByEsPrograma(Boolean estado) {
-        return repo.findByEsPrograma(estado);
+        return repo.findByEstado(estado);
     }
 }

@@ -22,22 +22,22 @@ public class Proyecto implements Serializable {
     private Integer id;
 
     @Column(name = "NO_PROYECTO")
-    private String noProyecto;
+    private String nombre;
 
     @Column(name = "OBJ_PROYECTO")
-    private String objProyecto;
+    private String objetivo;
 
     @Column(name = "DE_PROYECTO")
-    private String deProyecto;
+    private String descripcion;
 
     @Column(name = "FE_INICIO")
-    private String feInicio;
+    private String inicio;
 
     @Column(name = "FE_FIN")
-    private String feFin;
+    private String fin;
 
     @Column(name = "ES_PROYECTO",columnDefinition = "BIT")
-    private Boolean esProyecto;
+    private Boolean estado;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "proyecto")

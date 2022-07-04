@@ -18,7 +18,8 @@ public class ProgramaController {
     @Autowired
     private ProgramaService service;
 
-    @GetMapping
+
+    @GetMapping("/")
     public ResponseEntity<List<Programa>> find(@RequestParam(name = "proyecto",required = false) Integer proyecto,
                                                @RequestParam(name="esPrograma",required = false)Boolean esPrograma){
         List<Programa> p = new ArrayList<>();
@@ -51,20 +52,22 @@ public class ProgramaController {
     @PutMapping("/{id}")
     public Programa update(@RequestBody Programa programa,@PathVariable Integer id){
         Programa p = service.findById(id);
-        p.setNoPrograma(programa.getNoPrograma());
-        p.setObjPrograma(programa.getObjPrograma());
-        p.setDePrograma(programa.getDePrograma());
-        p.setFeInicio(programa.getFeInicio());
-        p.setFeFin(programa.getFeFin());
+        p.setNombre(programa.getNombre());
+        p.setObjetivo(programa.getObjetivo());
+        p.setDescripcion(programa.getDescripcion());
+        p.setInicio(programa.getInicio());
+        p.setFin(programa.getFin());
         p.setProyecto(programa.getProyecto());
         service.save(p);
         return p;
     }
+
     @DeleteMapping("/{id}")
     public Programa deleteById(@PathVariable Integer id){
         Programa programa= findById(id);
-        programa.setEsPrograma(false);
+        programa.setEstado(false);
         service.save(programa);
         return programa;
     }
+
 }

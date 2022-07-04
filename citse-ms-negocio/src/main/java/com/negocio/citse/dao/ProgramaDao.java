@@ -14,5 +14,5 @@ public interface ProgramaDao extends JpaRepository<Programa,Integer> {
     public List<Programa> findByProyecto(Proyecto proyecto);
 
     //listar programas mediante el estado
-    public List<Programa> findByEsPrograma(Boolean estado);
+    public List<Programa> findByEstado(Boolean estado);
 }

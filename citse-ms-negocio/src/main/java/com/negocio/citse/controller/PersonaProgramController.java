@@ -18,7 +18,7 @@ public class PersonaProgramController {
     @Autowired
     private PersonaProgramaService service;
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<PersonaPrograma>> findAll(@RequestParam(name = "programa",required = false)Integer programa){
         List<PersonaPrograma> p = new ArrayList<>();
         if(programa==null){
@@ -43,8 +43,8 @@ public class PersonaProgramController {
         service.save(personaPrograma);
         return ResponseEntity.ok(personaPrograma);
     }
+
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteById(@PathVariable Integer id){
         service.deleteById(id);
     }

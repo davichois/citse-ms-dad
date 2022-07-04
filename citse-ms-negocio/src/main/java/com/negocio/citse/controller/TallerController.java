@@ -20,7 +20,8 @@ public class TallerController{
     @Autowired
     private TallerService service;
 
-    @GetMapping
+
+    @GetMapping("/")
     public ResponseEntity<List<Taller>> findAll(@RequestParam(name = "nombre",required = false)String nombre,
                                                 @RequestParam(name = "programa",required = false)Integer programa){
         List<Taller> tallers = new ArrayList<>();
@@ -75,33 +76,4 @@ public class TallerController{
         return t;
     }
 
-    // private Integer idT;
-    /*
-    * @Override
-    public void run() {
-        Taller t =  service.findById(idT);
-        String inicio = t.getInicio();
-        String fin = t.getFin();
-        Boolean status = true;
-        LocalDateTime date_of_today = LocalDateTime.now();
-        //  System.out.println("formato actual: " + date_of_today);
-        DateTimeFormatter format_date_of_today = DateTimeFormatter.ofPattern("dd-MM-yyyy");//formateando fecha
-        String fechaSystem = date_of_today.format(format_date_of_today);
-
-        //
-        LocalDate sytem = LocalDate.parse(fechaSystem);
-        LocalDate feFintaller = LocalDate.parse(fin);
-        LocalDate feInicioTaller = LocalDate.parse(inicio);
-        System.out.println(fechaSystem);
-        while (status){
-            if(feFintaller.isBefore(LocalDate.now()) || feInicioTaller.isAfter(LocalDate.now())){
-                status = false;
-                t.setEstado(false);
-            }else if(feInicioTaller.isBefore(LocalDate.now()) && feFintaller.isAfter(LocalDate.now())){
-                t.setEstado(true);
-            }
-        }
-        //end while
-    }
-    * */
 }

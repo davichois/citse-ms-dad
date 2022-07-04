@@ -14,15 +14,17 @@ import java.util.List;
 @RestController
 @RequestMapping("lugarProyecto")
 public class LugarProyectoController {
+
     @Autowired
     private LugarProyectoService service;
+
 
     @GetMapping("/{id}")
     public LugarProyecto findById(@PathVariable Integer id){
         return service.findById(id);
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<LugarProyecto>> findAll(@RequestParam(name = "proyecto",required = false) Integer proyecto,
                                                               @RequestParam(name = "distrito",required = false)Integer distrito){
         List<LugarProyecto> lp = new ArrayList<>();

@@ -22,22 +22,22 @@ public class Programa implements Serializable {
     private Integer id;
 
     @Column(name = "NO_PROGRAMA")
-    private String noPrograma;
+    private String nombre;
 
     @Column(name = "OBJ_PROGRAMA")
-    private String objPrograma;
+    private String objetivo;
 
     @Column(name = "DE_PROGRAMA")
-    private String dePrograma;
+    private String descripcion;
 
     @Column(name = "FE_INICIO")
-    private String feInicio;
+    private String inicio;
 
     @Column(name = "FE_FIN")
-    private String feFin;
+    private String fin;
 
     @Column(name = "ES_PROGRAMA",columnDefinition = "BIT")
-    private Boolean esPrograma;
+    private Boolean estado;
 
     @ManyToOne
     @JoinColumn(name = "ID_PROYECTO")

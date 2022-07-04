@@ -18,7 +18,8 @@ public class EntidadProyectoController {
     @Autowired
     private EntidadProyectoService service;
 
-    @GetMapping
+
+    @GetMapping("/")
     public ResponseEntity<List<EntidadProyecto>> findAll(@RequestParam(name = "proyecto",required = false) Integer proyecto,
                                                             @RequestParam(name = "entidad",required = false)Integer entidad){
         List<EntidadProyecto> ep = new ArrayList<>();
