@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import com.negocio.citse.models.Entidad;
 
-@FeignClient(name = "citse-ms-entidad", path = "/ms/entidad")
+@FeignClient(name = "citse-ms-entidad", path = "/ms/entidad", fallback = EntidadHistrixFallback.class)
 public interface EntidadFeignClient {
 
     @GetMapping("/{id}")

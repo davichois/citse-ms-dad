@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@FeignClient(name = "citse-ms-tipo",path = "/tipo")
+@FeignClient(name = "citse-ms-tipo",path = "/tipo",fallback = TipoHistrixFallbackFactory.class)
 public interface TipoFeignClient {
 
     @GetMapping("/")

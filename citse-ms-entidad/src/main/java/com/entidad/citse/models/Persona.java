@@ -1,11 +1,13 @@
 package com.entidad.citse.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Transient;
 
 @Data
+@Builder
 public class Persona {
 
     private Integer idPersona;
