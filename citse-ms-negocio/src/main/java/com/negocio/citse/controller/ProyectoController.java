@@ -10,7 +10,7 @@ import org.springframework.web.context.support.HttpRequestHandlerServlet;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/proyecto")
+@RequestMapping("proyecto")
 public class ProyectoController {
 
     @Autowired

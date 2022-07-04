@@ -23,9 +23,9 @@ public class PublicInfosController {
         JSONObject DataInfo = new JSONObject();
 
         // Matrices
-        String[] depMs = {"get: /ms/departamento","get: /ms/departamento/id"};
-        String[] provMs = {"get: /ms/provincia","get: /ms/provincia/id"};
-        String[] disMs = {"get: /ms/distrito","get: /ms/distrito/id"};
+        String[] depMs = {"get: /departamento","get: /departamento/id"};
+        String[] provMs = {"get: /provincia","get: /provincia/id"};
+        String[] disMs = {"get: /distrito","get: /distrito/id"};
         JSONObject ms = new JSONObject();
         JSONObject dep = new JSONObject();
         JSONObject pv = new JSONObject();

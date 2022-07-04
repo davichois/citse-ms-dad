@@ -27,27 +27,11 @@ public class ProyectoServiceImp implements ProyectoService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Proyecto findById(Integer id) {
         return repo.findById(id).orElse(null);
-      /*  Proyecto p = repo.findById(id).orElse(null);
-        if(p!=null){
-            List<LugarProyecto> listDistritos=p.getLugares().stream().map(lugares ->{
-                Distrito distrito = distritoFeignClient.getDistrito(lugares.getIdDistrito());
-                lugares.setDistrito(distrito);
-                return lugares;
-            }).collect(Collectors.toList());
-            p.setLugares(listDistritos);
-        }
-//second option
-        p.getLugares().forEach(lugar -> {
-            distritoFeignClient.getDistrito(lugar.getIdDistrito());
-        });
-        * */
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Proyecto save(Proyecto proyecto) {
         return repo.save(proyecto);
     }

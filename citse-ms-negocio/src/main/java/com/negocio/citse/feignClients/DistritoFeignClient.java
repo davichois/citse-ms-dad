@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@FeignClient(name = "citse-ms-ubigeo", path = "/ms/distrito", fallback = DistritoHistrixFallback.class)//url = "http://localhost:8001/ms/distrito")
+@FeignClient(name = "citse-ms-ubigeo", path = "distrito", fallback = DistritoHistrixFallback.class)//url = "http://localhost:8001/ms/distrito")
 public interface DistritoFeignClient {
 
     @GetMapping("/{id}")

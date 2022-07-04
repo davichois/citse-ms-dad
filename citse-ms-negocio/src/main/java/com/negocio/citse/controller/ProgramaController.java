@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/programa")
+@RequestMapping("programa")
 public class ProgramaController {
 
     @Autowired
@@ -44,14 +44,23 @@ public class ProgramaController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
     public Programa save(@RequestBody Programa programa){
         return service.save(programa);
     }
 
-    //FALTA EL ELIMINADO LOGICO
+    @PutMapping("/{id}")
+    public Programa update(@RequestBody Programa programa,@PathVariable Integer id){
+        Programa p = service.findById(id);
+        p.setNoPrograma(programa.getNoPrograma());
+        p.setObjPrograma(programa.getObjPrograma());
+        p.setDePrograma(programa.getDePrograma());
+        p.setFeInicio(programa.getFeInicio());
+        p.setFeFin(programa.getFeFin());
+        p.setProyecto(programa.getProyecto());
+        service.save(p);
+        return p;
+    }
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
     public Programa deleteById(@PathVariable Integer id){
         Programa programa= findById(id);
         programa.setEsPrograma(false);

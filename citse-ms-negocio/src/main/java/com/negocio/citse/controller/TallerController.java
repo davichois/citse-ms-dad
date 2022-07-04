@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("ms/taller")
-public class TallerController implements Runnable{
+@RequestMapping("taller")
+public class TallerController{
 
     @Autowired
     private TallerService service;
@@ -47,7 +47,7 @@ public class TallerController implements Runnable{
         }else
             return ResponseEntity.notFound().build();
     }
-    private Integer idT;
+
     @PutMapping("/{id}")
     public ResponseEntity<Taller> update(@RequestBody Taller taller,@PathVariable Integer id){
         // datos
@@ -57,12 +57,27 @@ public class TallerController implements Runnable{
         t.setDescripcion(taller.getDescripcion());
         t.setInicio(taller.getInicio());
         t.setFin(taller.getFin());
+        t.setPrograma(taller.getPrograma());
         service.save(t);
-        idT=t.getId();
         return ResponseEntity.ok(taller);
     }
 
-    @Override
+    @PostMapping
+    public ResponseEntity<Taller> save(@RequestBody Taller taller){
+        service.save(taller);
+        return ResponseEntity.ok(taller);
+    }
+
+    @DeleteMapping("/{id}")
+    public Taller delete(@PathVariable Integer id){
+        Taller t = service.findById(id);
+        t.setEstado(false);
+        return t;
+    }
+
+    // private Integer idT;
+    /*
+    * @Override
     public void run() {
         Taller t =  service.findById(idT);
         String inicio = t.getInicio();
@@ -88,4 +103,5 @@ public class TallerController implements Runnable{
         }
         //end while
     }
+    * */
 }
