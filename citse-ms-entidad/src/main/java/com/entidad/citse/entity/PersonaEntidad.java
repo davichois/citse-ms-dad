@@ -18,7 +18,6 @@ public class PersonaEntidad implements Serializable {
     @Column(name = "ID_PERSONA_ENTIDAD")
     private Integer id;
 
-    @JsonIgnore
     @Column(name = "ID_PERSONA")
     private Integer idPersona;
 

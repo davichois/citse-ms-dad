@@ -55,4 +55,8 @@ public class EntidadController {
         service.save(e);
         return e;
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        service.deleteById(id);
+    }
 }

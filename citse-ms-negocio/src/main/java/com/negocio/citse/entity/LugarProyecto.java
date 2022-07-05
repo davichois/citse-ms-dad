@@ -18,7 +18,6 @@ public class LugarProyecto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @JsonIgnore
     @Column(name = "ID_DISTRITO")
     private Integer idDistrito;
 

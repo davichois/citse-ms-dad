@@ -9,4 +9,6 @@ public interface PersonaEntidadService {
     public PersonaEntidad findById(Integer id);
 
     public PersonaEntidad save(PersonaEntidad personaEntidad);
+
+    public void deleteById(Integer id);
 }

@@ -40,6 +40,11 @@ public class EntidadProyectoController {
         return ResponseEntity.ok(ep);
     }
 
+    @PostMapping
+    public EntidadProyecto save(@RequestBody EntidadProyecto entidadProyecto){
+        return service.save(entidadProyecto);
+    }
+
     @GetMapping("/{id}")
     public EntidadProyecto findById(@PathVariable Integer id){
         return service.findById(id);

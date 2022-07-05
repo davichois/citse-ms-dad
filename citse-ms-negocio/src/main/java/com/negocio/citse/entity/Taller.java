@@ -1,9 +1,11 @@
 package com.negocio.citse.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -36,4 +38,8 @@ public class Taller implements Serializable {
     @ManyToOne
     @JoinColumn(name = "ID_PROGRAMA")
     private Programa programa;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "taller")
+    private List<PersonaTaller> personasT;
 }

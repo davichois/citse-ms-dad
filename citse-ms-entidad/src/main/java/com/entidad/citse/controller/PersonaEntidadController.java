@@ -38,4 +38,8 @@ public class PersonaEntidadController {
         service.save(pe);
         return pe;
     }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id){
+        service.deleteById(id);
+    }
 }

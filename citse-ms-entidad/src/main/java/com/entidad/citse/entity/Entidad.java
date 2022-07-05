@@ -31,7 +31,6 @@ public class Entidad implements Serializable {
     @JoinColumn(name = "ID_PADRE",referencedColumnName = "ID_ENTIDAD")
     private Entidad idPadre;
 
-    @JsonIgnore
     @Column(name = "ID_TIPO_ENTIDAD")
     private Integer idTipoEntidad;
 

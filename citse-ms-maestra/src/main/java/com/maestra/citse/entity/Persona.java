@@ -35,21 +35,18 @@ public class Persona {
     @Column(name = "es_persona", columnDefinition = "BIT")
     private Boolean esPersona;
 
-    @JsonIgnore
     @Column(name = "id_ti_identificacion")
     private Integer idTiIndentificacion;
 
     @Transient
     private Tipo tipoIdentificacion;
 
-    @JsonIgnore
     @Column(name = "id_ti_persona")
     private Integer idTiPersona;
 
     @Transient
     private Tipo tipoPersona;
 
-    @JsonIgnore
     @Column(name = "id_ti_es_civil")
     private Integer idTiEsCivil;
 

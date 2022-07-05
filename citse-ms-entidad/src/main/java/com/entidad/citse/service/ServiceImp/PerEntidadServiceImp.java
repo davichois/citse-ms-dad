@@ -38,4 +38,9 @@ public class PerEntidadServiceImp implements PersonaEntidadService {
     public PersonaEntidad save(PersonaEntidad personaEntidad) {
         return repo.save(personaEntidad);
     }
+
+    @Override
+    public void deleteById(Integer id) {
+        repo.deleteById(id);
+    }
 }
