@@ -58,6 +58,13 @@ spring:
             - Path=/api/negocio/**
           filters:
             - StripPrefix=2
+            
+        - id: citse-ms-tipo
+          uri: lb://citse-ms-tipo
+          predicates:
+            - Path=/api/tipo/**
+          filters:
+            - StripPrefix=2
       globalcors:
         cors-configurations:
           "[/**]":
