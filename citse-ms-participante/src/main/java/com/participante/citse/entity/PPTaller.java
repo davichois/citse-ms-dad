@@ -1,5 +1,8 @@
 package com.participante.citse.entity;
 
+import com.participante.citse.models.PersonaPrograma;
+import com.participante.citse.models.Taller;
+import com.participante.citse.models.Tipo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,9 +21,18 @@ public class PPTaller implements Serializable {
     @Column(name = "ID_PERSONA_PROGRAMA")
     private Integer idPersonaPrograma;
 
+    @Transient
+    private PersonaPrograma personaPrograma;
+
     @Column(name = "ID_TALLER")
     private Integer idTaller;
 
+    @Transient
+    private Taller taller;
+
     @Column(name = "ID_ACTIVIDAD")
     private Integer idActividad;
+
+    @Transient
+    private Tipo actividad;
 }

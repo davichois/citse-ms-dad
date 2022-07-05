@@ -2,6 +2,11 @@ package com.participante.citse.service.ServiceImp;
 
 import com.participante.citse.dao.PPTallerDao;
 import com.participante.citse.entity.PPTaller;
+import com.participante.citse.feignClients.TipoFeign;
+import com.participante.citse.feignClients.negocioFeign;
+import com.participante.citse.models.PersonaPrograma;
+import com.participante.citse.models.Taller;
+import com.participante.citse.models.Tipo;
 import com.participante.citse.service.PPTallerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +19,11 @@ public class PPTallerServiceImp implements PPTallerService {
     @Autowired
     private PPTallerDao repo;
 
+    @Autowired
+    private negocioFeign negocioFeign;
+
+    @Autowired
+    private TipoFeign tipoFeign;
     @Override
     public List<PPTaller> findAll() {
         return repo.findAll();
@@ -21,7 +31,16 @@ public class PPTallerServiceImp implements PPTallerService {
 
     @Override
     public PPTaller findById(Integer id) {
-        return repo.findById(id).orElse(null);
+        PPTaller ppt = repo.findById(id).orElse(null);
+        if(ppt!=null){
+            PersonaPrograma pp = negocioFeign.getPersonaPrograma(ppt.getIdPersonaPrograma()).getBody();
+            ppt.setPersonaPrograma(pp);
+            Taller taller = negocioFeign.getTaller(ppt.getIdTaller()).getBody();
+            ppt.setTaller(taller);
+            Tipo tipo =tipoFeign.getTipo(ppt.getIdActividad()).getBody();
+            ppt.setActividad(tipo);
+        }
+        return ppt;
     }
 
     @Override
