@@ -19,7 +19,7 @@ public class Pregunta {
     @Column(name = "desc_pregunta")
     private String descPregunta;
 
-    @JsonIgnore
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_cuestionario")
     private Cuestionario cuestionario;

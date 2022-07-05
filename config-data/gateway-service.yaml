@@ -59,12 +59,13 @@ spring:
           filters:
             - StripPrefix=2
             
-        - id: citse-ms-tipo
-          uri: lb://citse-ms-tipo
+        - id: citse-ms-participante
+          uri: lb://citse-ms-participante
           predicates:
-            - Path=/api/tipo/**
+            - Path=/api/participante/**
           filters:
             - StripPrefix=2
+
       globalcors:
         cors-configurations:
           "[/**]":
