@@ -1,5 +1,7 @@
 package com.participante.citse.entity;
 
+import com.participante.citse.models.Cuestionario;
+import com.participante.citse.models.Taller;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,6 +20,12 @@ public class PPTCuestionario implements Serializable {
     @Column(name = "ID_CUESTIONARIO")
     private Integer idCuestionario;
 
+    @Transient
+    private Cuestionario cuestionario;
+
     @Column(name = "ID_PP_TALLER")
     private Integer idPPTaller;
+
+    @Transient
+    private Taller taller;
 }
