@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import java.util.List;
+
 @RepositoryRestResource(path = "usuarios")
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Integer> {
 
@@ -16,6 +18,6 @@ public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, I
     public Usuario obtenerPorNuUsuario(String nuUsuario);
 
     @RestResource(path = "estado")
-    public Usuario findByEsUsuario(@Param("is") Boolean estado);
+    public List<Usuario> findByEsUsuario(@Param("is") Boolean estado);
 
 }

@@ -1,5 +1,6 @@
 package com.maestra.citse.entity;
 
+import com.maestra.citse.models.Distrito;
 import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
@@ -22,6 +23,12 @@ public class Comunidad {
 
     @Column(name = "es_comunidad")
     private Boolean esComunidad;
+
+    @Column(name = "id_distrito")
+    private Integer idDistrito;
+
+    @Transient
+    private Distrito distrito;
 
     @OneToMany(mappedBy = "comunidad", cascade = CascadeType.ALL)
     List<Persona> personas;

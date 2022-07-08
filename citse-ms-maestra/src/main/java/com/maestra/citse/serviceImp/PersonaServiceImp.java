@@ -31,7 +31,16 @@ public class PersonaServiceImp implements PersonaService {
 
     @Override
     public Persona findByNuIndentificacion(String numero) {
-        return personaRepository.findByNuIndentificacion(numero);
+        Persona p = personaRepository.findByNuIndentificacion(numero);
+        if(p!=null){
+            Tipo tipoIdentificacion = tipoFeignClient.findById(p.getIdTiIndentificacion()).getBody();
+            p.setTipoIdentificacion(tipoIdentificacion);
+            Tipo tipoPersona = tipoFeignClient.findById(p.getIdTiPersona()).getBody();
+            p.setTipoPersona(tipoPersona);
+            Tipo esCivil = tipoFeignClient.findById(p.getIdTiEsCivil()).getBody();
+            p.setEsCivil(esCivil);
+        }
+        return p;
     }
 
     @Override

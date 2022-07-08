@@ -1,6 +1,8 @@
 package com.maestra.citse.serviceImp;
 
 import com.maestra.citse.entity.Comunidad;
+import com.maestra.citse.feignClients.UbigeoFeignClient;
+import com.maestra.citse.models.Distrito;
 import com.maestra.citse.repository.ComunidadRepository;
 import com.maestra.citse.service.ComunidadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class ComunidadServiceImp implements ComunidadService {
     @Autowired
     private ComunidadRepository comunidadRepository;
 
+    @Autowired
+    private UbigeoFeignClient ubigeoFeignClient;
 
     @Override
     public List<Comunidad> findAll() {
@@ -22,7 +26,12 @@ public class ComunidadServiceImp implements ComunidadService {
 
     @Override
     public Comunidad findById(int id_comunidad) {
-        return comunidadRepository.findById(id_comunidad).orElseThrow();
+        Comunidad comunidad = comunidadRepository.findById(id_comunidad).orElse(null);
+        if(comunidad!=null) {
+            Distrito distrito = ubigeoFeignClient.getDistrito(comunidad.getIdDistrito()).getBody();
+            comunidad.setDistrito(distrito);
+        }
+        return comunidad;
     }
 
     @Override

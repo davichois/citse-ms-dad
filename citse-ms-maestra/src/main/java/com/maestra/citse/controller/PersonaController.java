@@ -43,7 +43,7 @@ public class PersonaController {
         }
     }
 
-    @GetMapping("/dni={dni}")
+    @GetMapping("dni/{dni}")
     public Persona findByIdentificacion(@PathVariable String dni){
         return personaService.findByNuIndentificacion(dni);
     }
