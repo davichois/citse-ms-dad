@@ -73,8 +73,8 @@ spring:
           filters:
             - StripPrefix=2
 
-        - id: citse-sg-oauth
-          uri: lb://citse-sg-oauth
+        - id: oauth-service
+          uri: lb://oauth-service
           predicates:
             - Path=/api/security/**
           filters:

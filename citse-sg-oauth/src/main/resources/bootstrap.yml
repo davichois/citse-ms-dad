@@ -1,6 +1,6 @@
 spring:
   application:
-    name: citse-sg-oauth
+    name: oauth-service
   cloud:
     config:
       enabled: true
