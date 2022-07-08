@@ -14,6 +14,7 @@ public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, I
 
     public Usuario findByNuUsuarioAndEsUsuario(String nuUsuario, Boolean esUsuario);
 
+    @RestResource(path = "obtener-numero")
     @Query("select u from Usuario u where u.nuUsuario=?1")
     public Usuario obtenerPorNuUsuario(String nuUsuario);
 
