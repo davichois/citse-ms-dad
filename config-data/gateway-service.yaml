@@ -73,6 +73,13 @@ spring:
           filters:
             - StripPrefix=2
 
+        - id: citse-sg-oauth
+          uri: lb://citse-sg-oauth
+          predicates:
+            - Path=/api/security/**
+          filters:
+            - StripPrefix=2
+
       globalcors:
         cors-configurations:
           "[/**]":
