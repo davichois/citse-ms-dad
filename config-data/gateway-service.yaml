@@ -66,6 +66,13 @@ spring:
           filters:
             - StripPrefix=2
 
+        - id: citse-ms-sg
+          uri: lb://citse-ms-sg
+          predicates:
+            - Path=/api/sg/**
+          filters:
+            - StripPrefix=2
+
       globalcors:
         cors-configurations:
           "[/**]":
