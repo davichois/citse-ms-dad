@@ -1,6 +1,8 @@
 package com.oauth.citse.service;
 
+import com.oauth.citse.FeignClients.MaestraFeignClient;
 import com.oauth.citse.FeignClients.sgFeignClient;
+import com.oauth.citse.models.Persona;
 import com.oauth.citse.models.Usuario;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +19,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService implements IUsuarioService, UserDetailsService {
 
     private Logger log = LoggerFactory.getLogger(UsuarioService.class);
 
     @Autowired
     private sgFeignClient feignClient;
+
+    @Autowired
+    private MaestraFeignClient maestraFeignClient;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,5 +44,15 @@ public class UsuarioService implements UserDetailsService {
                 true,true,true,authorities);
 
 
+    }
+
+    @Override
+    public Usuario findByUsername(String username) {
+        return feignClient.getUsuario(username);
+    }
+
+    @Override
+    public Persona findByNuIdentification(String numero) {
+        return maestraFeignClient.getPersona(numero);
     }
 }
