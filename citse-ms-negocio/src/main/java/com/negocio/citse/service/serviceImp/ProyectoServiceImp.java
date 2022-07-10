@@ -1,10 +1,7 @@
 package com.negocio.citse.service.serviceImp;
 
 import com.negocio.citse.dao.ProyectoDao;
-import com.negocio.citse.entity.LugarProyecto;
 import com.negocio.citse.entity.Proyecto;
-import com.negocio.citse.feignClients.DistritoFeignClient;
-import com.negocio.citse.models.Distrito;
 import com.negocio.citse.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +20,7 @@ public class ProyectoServiceImp implements ProyectoService {
     @Override
     @Transactional(readOnly = true)
     public List<Proyecto> findAll() {
-        return repo.findAll();
+        return repo.findAll().stream().filter(proyecto -> proyecto.getEstado() == true).collect(Collectors.toUnmodifiableList());
     }
 
     @Override

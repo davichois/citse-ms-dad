@@ -22,11 +22,13 @@ public class PersonaProgramController {
     public ResponseEntity<List<PersonaPrograma>> findAll(@RequestParam(name = "programa",required = false)Integer programa){
         List<PersonaPrograma> p = new ArrayList<>();
         if(programa==null){
+            System.out.println("aca");
             p=service.findAll();
             if(p.isEmpty())
                 return ResponseEntity.noContent().build();
         }else {
-            p=service.fyndByPrograma(Programa.builder().id(programa).build());
+            System.out.println("aca 2");
+            p=service.findByPrograma(Programa.builder().id(programa).build());
             if(p.isEmpty())
                 return ResponseEntity.notFound().build();
         }

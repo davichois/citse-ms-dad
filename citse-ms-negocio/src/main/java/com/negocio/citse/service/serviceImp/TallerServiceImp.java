@@ -47,4 +47,9 @@ public class TallerServiceImp implements TallerService {
     public List<Taller> findByPrograma(Programa programa) {
         return repo.findByPrograma(programa);
     }
+
+    @Override
+    public List<Taller> findByEsTaller(Boolean estado) {
+        return repo.findByEstado(estado);
+    }
 }

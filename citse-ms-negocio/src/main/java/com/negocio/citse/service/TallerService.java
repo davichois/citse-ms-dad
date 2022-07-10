@@ -14,4 +14,5 @@ public interface TallerService {
     // Otras utilidades
     public List<Taller> findByNombre(String nombre);
     public List<Taller> findByPrograma(Programa programa);
+    public List<Taller> findByEsTaller(Boolean estado);
 }

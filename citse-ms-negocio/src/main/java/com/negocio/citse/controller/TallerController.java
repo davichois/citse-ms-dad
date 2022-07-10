@@ -23,7 +23,8 @@ public class TallerController{
 
     @GetMapping("/")
     public ResponseEntity<List<Taller>> findAll(@RequestParam(name = "nombre",required = false)String nombre,
-                                                @RequestParam(name = "programa",required = false)Integer programa){
+                                                @RequestParam(name = "programa",required = false)Integer programa,
+                                                @RequestParam(name="esTaller",required = false)Boolean esTaller){
         List<Taller> tallers = new ArrayList<>();
         if(nombre==null && programa==null){
             tallers = service.findAll();
@@ -34,7 +35,7 @@ public class TallerController{
             if(tallers.isEmpty())
                 return ResponseEntity.noContent().build();
         }else {
-            tallers=service.findByPrograma(Programa.builder().id(programa).build());
+            tallers=service.findByEsTaller(esTaller);
             if(tallers.isEmpty())
                 return ResponseEntity.noContent().build();
         }

@@ -22,7 +22,12 @@ public class PersonaProgramServiceImp implements PersonaProgramaService {
 
     @Override
     public List<PersonaPrograma> findAll() {
-        return repo.findAll();
+        List<PersonaPrograma> ppl = repo.findAll();
+        ppl.stream().forEach(personaPrograma -> {
+            Persona persona = personaFeignClient.findById(personaPrograma.getIdPersona()).getBody();
+            personaPrograma.setPersona(persona);
+        });
+        return ppl;
     }
 
     @Override
@@ -46,7 +51,7 @@ public class PersonaProgramServiceImp implements PersonaProgramaService {
     }
 
     @Override
-    public List<PersonaPrograma> fyndByPrograma(Programa programa) {
+    public List<PersonaPrograma> findByPrograma(Programa programa) {
         return repo.findByPrograma(programa);
     }
 }

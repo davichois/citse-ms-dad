@@ -14,5 +14,5 @@ public interface PersonaProgramaService {
     public PersonaPrograma findById(Integer id);
     public void deleteById(Integer id);
 
-    public List<PersonaPrograma> fyndByPrograma(Programa programa);
+    public List<PersonaPrograma> findByPrograma(Programa programa);
 }
