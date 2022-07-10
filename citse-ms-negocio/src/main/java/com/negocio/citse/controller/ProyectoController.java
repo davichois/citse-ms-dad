@@ -40,6 +40,7 @@ public class ProyectoController {
         p.setDescripcion(proyecto.getDescripcion());
         p.setInicio(proyecto.getInicio());
         p.setFin(proyecto.getFin());
+        p.setEstado(proyecto.getEstado());
         return service.save(p);
     }
 
