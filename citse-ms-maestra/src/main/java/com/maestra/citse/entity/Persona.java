@@ -1,6 +1,5 @@
 package com.maestra.citse.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maestra.citse.models.Tipo;
 import lombok.Data;
