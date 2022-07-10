@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {// can be deprecated
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
