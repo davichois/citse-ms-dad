@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "citse-ms-sg")
 public interface sgFeignClient {
 
-    @GetMapping("/usuarios/search/obtener-numero")
-    public Usuario getUsuario(@RequestParam String nuUsuario);
+    @GetMapping("/usuarios/search/identificacion")
+    public Usuario getUsuario(@RequestParam(name = "numero") String nuUsuario);
 }
