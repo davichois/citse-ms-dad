@@ -26,7 +26,16 @@ public class PPTallerServiceImp implements PPTallerService {
     private TipoFeign tipoFeign;
     @Override
     public List<PPTaller> findAll() {
-        return repo.findAll();
+        List<PPTaller> ppTallers =  repo.findAll();
+        ppTallers.stream().forEach(ppTaller -> {
+            PersonaPrograma pp = negocioFeign.getPersonaPrograma(ppTaller.getIdPersonaPrograma()).getBody();
+            ppTaller.setPersonaPrograma(pp);
+
+            Tipo tipo = tipoFeign.getTipo(ppTaller.getIdActividad()).getBody();
+            ppTaller.setActividad(tipo);
+
+        });
+        return ppTallers;
     }
 
     @Override
