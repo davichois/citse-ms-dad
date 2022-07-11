@@ -1,13 +1,18 @@
 package com.gateway.service.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
+import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @EnableWebFluxSecurity
 public class SpringSecurityConfig {
+
+    @Autowired
+    private JwtAutheticationFilter autheticationFilter;
 
     @Bean
     public SecurityWebFilterChain configure(ServerHttpSecurity httpSecurity){
@@ -39,7 +44,8 @@ public class SpringSecurityConfig {
                 .pathMatchers(HttpMethod.POST,"/api/participante/respuesta/","").hasRole("Estudiante")
                 .pathMatchers(HttpMethod.PUT,"/api/participante/respuesta/{id}","/api/sg/usuarios/{idUsuario}").hasRole("Estudiante")
                 .anyExchange().authenticated()
-                .and().csrf()
+                .and().addFilterAt(autheticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
+                .csrf()
                 .disable()
                 .build();
     }
