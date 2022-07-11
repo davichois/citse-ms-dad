@@ -43,7 +43,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("frontendApp").secret(passwordEncoder.encode("123456"))
+        clients.inMemory().withClient(env.getProperty("config.security.oauth.client.id")).secret(passwordEncoder.encode(env.getProperty("config.security.oauth.client.secret")))
                 .scopes("read","write")
                 .authorizedGrantTypes("password","refresh_token")
                 .accessTokenValiditySeconds(3600).refreshTokenValiditySeconds(3600);
