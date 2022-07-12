@@ -1,6 +1,7 @@
 package com.gateway.service.security;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
@@ -12,11 +13,15 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import javax.crypto.SecretKey;
+import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
+import java.security.Key;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.springframework.cache.interceptor.SimpleKeyGenerator.generateKey;
 
 @Component
 public class AuthenticationManager implements ReactiveAuthenticationManager {
@@ -43,4 +48,5 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 
                 });
     }
+
 }

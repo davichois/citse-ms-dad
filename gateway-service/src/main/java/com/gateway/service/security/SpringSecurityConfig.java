@@ -33,16 +33,16 @@ public class SpringSecurityConfig {
                 ,"/api/negocio/programa/?esPrograma","/api/negocio/programa/?proyecto","/api/negocio/taller/{id}"
                 ,"/api/negocio/taller/?esTaller","/api/negocio/taller/?programa","/api/cuestionario/cuestionario?nombre"
                         ,"/api/cuestionario/cuestionario/{id}","/api/cuestionario/pregunta/{id}"
-                ,"/api/entidad/entidad/{id}","/api/entidad/personaEntidad/{id}").hasAnyRole("Docente","Estudiante")
+                ,"/api/entidad/entidad/{id}","/api/entidad/personaEntidad/{id}").hasAnyRole("DOCENTE","ESTUDIANTE","ADMIN")
                 .pathMatchers("/api/entidad/entidad/**",
                         "/api/maestra/persona/**","/api/negocio/proyecto/**","/api/negocio/programa/**"
                 ,"/api/negocio/taller/**","/api/negocio/entidadProyecto/**","/api/negocio/personaPrograma/**"
                 ,"/api/negocio/lugarProyecto/**","/api/cuestionario/cuestionario/**","/api/cuestionario/pregunta/**"
                 ,"/api/entidad/entidad/**","/api/entidad/personaEntidad/**"
                 ,"/api/participante/PPTaller/**","/api/participante/PPTCuestionario/**","/api/participante/respuesta/**"
-                ,"/api/sg/usuarios/**").hasAnyRole("Docente","Administrador")
-                .pathMatchers(HttpMethod.POST,"/api/participante/respuesta/","").hasRole("Estudiante")
-                .pathMatchers(HttpMethod.PUT,"/api/participante/respuesta/{id}","/api/sg/usuarios/{idUsuario}").hasRole("Estudiante")
+                ,"/api/sg/usuarios/**").hasAnyRole("DOCENTE","ADMIN")
+                .pathMatchers(HttpMethod.POST,"/api/participante/respuesta/","").hasRole("ESTUDIANTE")
+                .pathMatchers(HttpMethod.PUT,"/api/participante/respuesta/{id}","/api/sg/usuarios/{idUsuario}").hasRole("ESTUDIANTE")
                 .anyExchange().authenticated()
                 .and().addFilterAt(autheticationFilter, SecurityWebFiltersOrder.AUTHENTICATION)
                 .csrf()
