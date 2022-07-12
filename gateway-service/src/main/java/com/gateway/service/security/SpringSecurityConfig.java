@@ -26,7 +26,7 @@ public class SpringSecurityConfig {
                 ,"/api/cuestionario/cuestionario/","/api/cuestionario/pregunta/"
                 ,"/api/entidad/entidad/","/api/entidad/personaEntidad/"
                 ,"/api/participante/PPTaller/","/api/participante/PPTCuestionario/","/api/participante/respuesta/"
-                ,"/api/sg/usuarios","/api/sg/usuarios/search/identificacion","/api/negocio/taller/?nombre","/api/tipo/tipo/{id}",
+                ,"/api/sg/usuarios","/api/sg/usuarios/{idUsuario}","/api/sg/usuarios/search/identificacion","/api/negocio/taller/?nombre","/api/tipo/tipo/{id}",
                         "/api/maestra/persona/{id}").permitAll()
                 .pathMatchers(HttpMethod.GET,"/api/maestra/persona/{id}"
                 ,"/api/maestra/persona/dni/{dni}","/api/negocio/proyecto/{id}","/api/negocio/programa/{id}"
