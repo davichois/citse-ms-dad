@@ -15,15 +15,15 @@ import reactor.core.publisher.Mono;
 public class JwtAutheticationFilter implements WebFilter {
 
     @Autowired
-    private ReactiveAuthenticationManager authManager;
+    private ReactiveAuthenticationManager authenticationManager;
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain webFilterChain) {
+    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         return Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION))
                 .filter(authHeader -> authHeader.startsWith("Bearer "))
-                .switchIfEmpty(webFilterChain.filter(exchange).then(Mono.empty()))
-                .map(token -> token.replace("Bearer ",""))
-                .flatMap(token -> authManager.authenticate(new UsernamePasswordAuthenticationToken(null,token)))
-                .flatMap(authentication -> webFilterChain.filter(exchange).contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication)));
+                .switchIfEmpty(chain.filter(exchange).then(Mono.empty()))
+                .map(token -> token.replace("Bearer ", ""))
+                .flatMap(token -> authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(null, token)))
+                .flatMap(authentication -> chain.filter(exchange).contextWrite(ReactiveSecurityContextHolder.withAuthentication(authentication)));
     }
 }

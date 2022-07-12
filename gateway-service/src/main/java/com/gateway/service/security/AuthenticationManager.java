@@ -23,21 +23,24 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
 
 
     @Value("${config.security.oauth.jwt.key}")
-    private String keyJWT;
+    private String llaveJwt;
 
     @Override
+    @SuppressWarnings("unchecked")
     public Mono<Authentication> authenticate(Authentication authentication) {
         return Mono.just(authentication.getCredentials().toString())
-                .map(token ->{
-                    SecretKey key = Keys.hmacShaKeyFor(Base64.getEncoder().encode(keyJWT.getBytes()));
-                    return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-                }).map(claims -> {
-                    String username = claims.get("user_name",String.class);
-                    @SuppressWarnings("unchecked")
-                    List<String> roles = claims.get("authorities",List.class);
-                    Collection<GrantedAuthority> authorities = roles.stream().map(SimpleGrantedAuthority::new) //role -> new SimpleGrantedAuthority(role)
+                .map(token -> {
+                    SecretKey llave = Keys.hmacShaKeyFor(Base64.getEncoder().encode(llaveJwt.getBytes()));
+                    return Jwts.parserBuilder().setSigningKey(llave).build().parseClaimsJws(token).getBody();
+                })
+                .map(claims -> {
+                    String username = claims.get("user_name", String.class);
+
+                    List<String> roles = claims.get("authorities", List.class);
+                    Collection<GrantedAuthority> authorities = roles.stream().map(SimpleGrantedAuthority::new)
                             .collect(Collectors.toList());
-                    return new UsernamePasswordAuthenticationToken(username,null,authorities);
+                    return new UsernamePasswordAuthenticationToken(username, null, authorities);
+
                 });
     }
 }
