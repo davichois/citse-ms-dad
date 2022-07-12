@@ -30,7 +30,7 @@ public class AuthenticationManager implements ReactiveAuthenticationManager {
     public Mono<Authentication> authenticate(Authentication authentication) {
         return Mono.just(authentication.getCredentials().toString())
                 .map(token -> {
-                    SecretKey llave = Keys.hmacShaKeyFor(Base64.getEncoder().encode(llaveJwt.getBytes()));
+                    SecretKey llave = Keys.hmacShaKeyFor(Base64.getEncoder().encode(llaveJwt.getBytes(StandardCharsets.UTF_8)));
                     return Jwts.parserBuilder().setSigningKey(llave).build().parseClaimsJws(token).getBody();
                 })
                 .map(claims -> {
